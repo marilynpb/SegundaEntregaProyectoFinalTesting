@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="../css/login.css">
+<title>Login</title>
+<body>
+    {{>navbar}}
+
+    <main>
+        <div class="login"> 
+            <form action="" method="post">  
+                <h2>Ingresá a tu cuenta</h2>
+                <label>Email</label>
+                <input type="email" maxlength="30" placeholder="Email@dominio.com" id="email" name="email" value="Email@dominio.com"> 
+                <label>Contraseña</label>
+                <input type="password" maxlength="16" placeholder="******************" id="contraseña" name="password" value="123">
+                <p class="problemas"><a href="./olvideMiContraseña.html">¿Olvidaste tu contraseña?</a></p>
+                <button onclick="validar()" type="submit">Ingresar</button>
+                <p class="noTienesCuenta">No tienes cuenta?  <a href="register">Registrate aquí</a></p>
+            </form>
+        </div> 
+    </main>
+
+    {{>footer}}
+</body>

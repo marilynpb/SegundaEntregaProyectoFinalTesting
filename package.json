@@ -1,0 +1,35 @@
+{
+  "name": "segundaentrega-proyectofinal-backend",
+  "version": "1.0.0",
+  "description": "* * FreeCVMaker",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marilynpb/PrimerEntrega-ProyectoFinal.git"
+  },
+  "author": "Gloria Marilyn Perez Boyko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marilynpb/PrimerEntrega-ProyectoFinal/issues"
+  },
+  "homepage": "https://github.com/marilynpb/PrimerEntrega-ProyectoFinal#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "hbs": "^4.2.0",
+    "jquery": "^3.6.1",
+    "mongoose": "^6.7.2",
+    "nanoid": "^4.0.0",
+    "nodemon": "^2.0.20",
+    "path": "^0.12.7",
+    "random-id": "^1.0.4",
+    "router": "^1.3.7",
+    "routes": "^2.1.0"
+  }
+}

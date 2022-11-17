@@ -1,0 +1,61 @@
+<link rel="stylesheet" href="../css/miCuenta.css">
+<title>Mi cuenta</title>
+
+<main>
+        <div class="container">
+            <div class="menuLateral">
+                <a href="../index.html"><img src="../img/LogoMakr-8VCzkk.png" class="logo" alt="logo"></a>
+                <ul>
+                    <li><img src="../img/Iconos/person-circle.svg" class="userIcon"><h3>Nombre Usuario</h3></li>
+                    <li><a href="./miCurriculum.html">Ver mi CV</a></li>
+                    <li><a href="./datosPersonales.html">Crear Curriculum</a></li>
+                    <li><a href="../index.html" ><div class="icono cerrarSesion"><p>Cerrar sesión</p><img src="../img/Iconos/box-arrow-in-right.svg"></a></div></li>
+                </ul>
+            </div>
+            <div class="datosCuenta"> 
+                <form>
+                    <h1>Mis datos</h1>
+                    <div>
+                        <h3>Cuenta</h3>
+                        <button class="editar"><img src="../img/Iconos/pencil-square.svg"></button>
+                        <label>Correo Electrónico</label>
+                        <input type="text" class="correElectronico">
+                        <span>-</span>
+                        <p><a href="/">Eliminar cuenta</a></p>
+                        <button class="guardar">Guardar</button>
+                    </div>  
+                    <div>
+                        <h3>Cambiar contraseña</h3>
+                        <button onclick="modificarDatos()" class="editar"><img src="../img/Iconos/pencil-square.svg"></button>
+                        <label>Contraseña actual</label>
+                        <input type="password" class="contraseña">
+                        <label>Nueva contraseña</label>
+                        <input type="password" class="contraseña">
+                        <label>Confirmar contraseña</label>
+                        <input type="password" class="confirmarContraseña">
+                        <button class="guardar">Guardar</button>
+                    </div>
+                    {{#each personaldatas}}
+                    <div>
+                        <h3>Datos Personales</h3>
+                        <button onclick="modificarDatos()" class="editar"><img src="../img/Iconos/pencil-square.svg"></button>
+                        <label>Nombre</label>
+                        <input type="text" name="nombre" value={{this.nombre}}>
+                        <label>Apellido</label>
+                        <input type="text" class="apellido" name="apellido" value={{this.apellido}}>
+                        <label>Teléfono</label>
+                        <input type="text" name="telefono" value={{this.telefono}}>
+                        <label>Código Pos</label>
+                        <input type="text" name="cp" value={{this.cp}}>
+                        <label>Dirección(calle)</label>
+                        <input type="text" name="calle" value={{this.calle}}>
+                        <label>Altura</label>
+                        <input type="text" name="altura" value={{this.altura}}>
+                        <span>-</span>
+                        <button class="guardar">Guardar</button>
+                    </div>
+                    {{/each}}
+                </form>
+            </div> 
+        </div>    
+    </main>

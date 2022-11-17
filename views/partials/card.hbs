@@ -1,0 +1,9 @@
+    <article class="card mb-2">
+        <div class="card-body">
+            <p>{{this.nombre}}</p>
+            <p>{{this.apellido}}</p>
+            <a href="eliminar/{{this._id}}" class="btn btn-danger">Eliminar</a>
+            <a href="editar/{{this._id}}" class="btn btn-warning">Editar</a>
+            <button data-short="{{this.email}}" href="#" class="btn btn-info">Copiar</button>
+        </div>
+    </article>

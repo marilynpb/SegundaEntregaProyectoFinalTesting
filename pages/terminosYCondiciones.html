@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style/terminosYCondiciones.css">
+    <title>Términos y Condiciones</title>
+</head>
+<body>
+    <header>
+        <nav class="header" id="header">
+            <a href="../index.html"><img src="../img/LogoMakr-8VCzkk.png" class="logo" alt="logo"></a>
+            <ul>
+                <li class="menu"><a href="../index.html">Inicio</a></li>
+                <li class="login"><a href="./login.html">Ingresar</a></li>
+                <li class="menu"><a href="./plantillas.html">Plantillas</a></li>
+                <li class="menu"><a href="./donaciones.html">Donaciones</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>              
+        <div class="descripcion">
+            <h1>Términos y Condiciones</h1>
+            <h3>Leá detenidamente nuestros términos y condiciones.</h3>
+            <div class="seccion1">
+            <p>El uso de FreeCVMaker (de aquí en adelante: "el servicio") está sujeto a las condiciones de uso que detallamos a continuación. Al utilizar el servicio, usted acepta todos estos términos y condiciones. FreeCVMaker se le ofrece a usted por Creador de Curriculums</p>
+            </div>   
+        </div> 
+
+        <div class="seccion2">
+            <h3 class="primerTitulo">Artículo 1. Uso del servicio</h3>
+            <p>Podrá utilizar este servicio gratuito para crear, editar y descargar CVs. Usted es responsable de hacer un uso correcto de las herramientas y funcionalidades que el servicio ofrece.</p>
+            <h3>Artículo 2. Reglas de uso</h3>
+            <p>La cuenta es personal y únicamente puede ser utilizada por el propietario de la dirección de correo electrónico vinculada a la cuenta. Está estrictamente prohibido dar acceso a terceros a su cuenta.</p>
+            <h3>Artículo 3. Mantenimiento y disponibilidad</h3>
+            <p>FreeCVMaker se compromete a hacer todo lo posible para que el servicio esté disponible, pero no puede garantizar su disponibilidad al 100%.</p>
+            <h3>Artículo 4. Propiedad intelectual</h3>
+            <p>El servicio, las páginas web y el software que los acompaña, así como toda la información, las fotografías, las plantillas, el diseño de los currículums y las cartas de presentación son propiedad intelectual de Creador de Curriculums. Su uso o copia sin permiso, excepto en los casos en los que la ley lo permita, no está permitida.</p>
+            <h3>Artículo 5. Cargo por servicio</h3>
+            <p>No hay una tarifa asociada al servicio. Usted puede realizar un aporte donativo en caso de preferirlo así.</p>
+            <h3>Artículo 6. Condiciones de donaciones</h3>
+            <p>Para usuarios que realicen donaciones: no habrá posibilidad de reembolso.</p>
+            <h3>Artículo 7. Responsabilidad</h3>
+            <p>Siempre y cuando no haya una disposición legal que las excluya, las siguientes disposiciones de responsabilidad se aplican al uso del servicio.</p>
+            <h3>Artículo 8. Contacto</h3>
+            <p>Si tiene alguna pregunta, sugerencia o comentario acerca de estos términos y condiciones, por favor, póngase en contacto con nosotros utilizando nuestro <a href="#">formulario de contacto.</a></p>
+        </div>  
+    </main>
+
+    <footer>
+        <img src="../img/LogoMakr-8VCzkk.png" class="logoFooter" alt="logo">
+        <ul class="redesSociales">
+            <li>
+                <a href="https://www.facebook.com" target="_blank"><img src="../img/redes/734399_facebook_media_online_social_icon.png" alt="face"></a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com" target="_blank"><img src="../img/redes/734394_instagram_media_online_social_icon.png" alt="insta"></a>
+            </li>
+            <li>
+                <a href="https://ar.linkedin.com" target="_blank"><img src="../img/redes/734383_in_linked_media_online_social_icon.png" alt="lin"></a>
+            </li>
+        </ul>
+        <nav class="menuFooter">
+            <ul class="menuFooterUl">
+                <li><a href="./acercaDe.html">Acerca de</a></li>
+                <li class="separador"><a href="./contacto.html">Contacto</a></li>
+                <li class="separador"><a href="../index.html#preguntasFrecuentes">Preguntas frecuentes</a></li>
+                <li class="separador"><a href="./terminosYCondiciones.html">Términos y condiciones</a></li>
+                <li class="separador"><a href="./politicasDePrivacidad.html">Política de privacidad</a></li> 
+            </ul>
+        </nav>
+        <div class="copy">
+            <p>Copyright © 2022.All Rights Reserved By <em>Creador de Curriculums</em> </p>
+        </div>
+    </footer>
+    
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+        window.addEventListener("scroll", function(){
+            var header= document.querySelector("header");
+            header.classList.toggle("abajo", window.scrollY>50);
+        })
+    </script>
+</body>
+</html>
