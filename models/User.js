@@ -37,9 +37,10 @@ UserSchema.pre("save", async function(next){
     }
     catch (error){
         console.log(error)
-        next()
+        throw new Error ("Error al codificar la contraseña")
     }
 })
+
 
 UserSchema.methods.comparePassword = async function(canditePassword){
     return await bcrypt.compare(canditePassword, this.password)

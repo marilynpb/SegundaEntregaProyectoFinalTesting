@@ -1,4 +1,6 @@
 const express = require('express');
+const {body} = require('express-validator')
+
 const { 
     loginForm, 
     registerForm, 
@@ -10,10 +12,41 @@ const {
 const router = express.Router();
 
 router.get('/register', registerForm)
-router.post('/register', registerUser)
+
+router.post('/register', [
+    body('email', "Ingrese un correo electrónico válido")
+        .trim()
+        .isEmail()
+        .normalizeEmail(),
+
+    body('password', "La contaseña debe tener al menos 6 carácteres")
+        .trim()
+        .isLength({min:6})
+        .escape()
+        .custom((value, {req})=>{
+            if(value !== req.body.rePassword){
+                throw new Error('Las contraseñas no coinciden')
+            }
+            else{
+                return value;
+            }
+    })
+], registerUser)
+
 router.get('/confirmar/:token', confirmarCuenta)
 router.get('/login', loginForm)
-router.post('/login', loginUser)
+
+router.post('/login',[
+    body('email', "Ingrese un correo electrónico válido")
+        .trim()
+        .isEmail()
+        .normalizeEmail(),
+
+    body('password', "La contaseña debe tener al menos 6 carácteres")
+        .trim()
+        .isLength({min:6})
+        .escape()
+] ,loginUser)
 
 
 module.exports = router

@@ -3,17 +3,20 @@
 
 <body>
         {{>navbar}}
+
+        {{>alertas}}
+        
     <main>
         <div class="registro"> 
             <form action="" method="post">  
                 <h2>Registráte</h2>
                 <p class="ingresa">Ingresá tu email y una contraseña</p>
                 <label>Email</label>
-                <input type="email" maxlength="30" placeholder="Email@dominio.com" name="email" value="Email@dominio.com">
+                <input type="string" maxlength="30" placeholder="Email@dominio.com" name="email">
                 <label>Contraseña</label>
-                <input type="password" maxlength="16" placeholder="******************" name="password" value="123">
+                <input type="password" maxlength="16" placeholder="******************" name="password">
                 <label>Confirmar contraseña</label>
-                <input type="password" maxlength="16" placeholder="******************" name="rePassword" value="123">
+                <input type="password" maxlength="16" placeholder="******************" name="rePassword">
                 <button type="submit">Registrarse</button>
                 <p class="yaTienesCuenta">Ya tienes cuenta?<a href="login">Ingresá aquí</a></p>
             </form>

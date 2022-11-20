@@ -1,14 +1,22 @@
 const User = require("../models/User")
+const {validationResult} = require('express-validator')
 const randomId = require('random-id');
 const bcrypt = require('bcryptjs')
 
 
 const registerForm = (req, res)=>{
-    res.render("register")
+    res.render('register', {mensajes: req.flash("mensajes")})
 }
 
+//Registro de usuarios
 const registerUser = async(req, res)=>{
-    console.log(req.body)
+
+    const errors = validationResult(req)
+    if(!errors.isEmpty()){
+        req.flash("mensajes", errors.array())
+        return res.redirect('/auth/register')
+    }
+
     const {email, password} = req.body
     var patrón = 'aA0'
     var largo = 30;
@@ -20,12 +28,14 @@ const registerUser = async(req, res)=>{
         user = new User({email, password, tokenConfirm: randomId(largo, patrón)})
         await user.save()
 
+        req.flash("mensajes", 
+        [{msg: "Necesitás activar tu cuenta, por favor revisá tu correo electrónico y accede al link de confirmación que te hemos enviado"}])
         //Enviar correo de confirmacion
-        res.redirect('login')
+        res.redirect('/auth/login')
     }
     catch(error){
-        console.log(error)
-        res.send(error.message)
+        req.flash("mensajes", [{msg: error.message}])
+        return res.redirect('/auth/register')
     }
 }
 
@@ -41,19 +51,29 @@ const confirmarCuenta = async (req, res)=>{
 
         await user.save()
 
+        req.flash("mensajes", 
+        [{msg: "Cuenta activada, ya podés iniciar sesión"}])
+
         res.redirect('/auth/login')
     }
     catch(error){
-        console.log(error)
-        res.send(error.message)
+        req.flash("mensajes", [{msg: error.message}])
+        return res.redirect('/auth/login')
     }
 }
 
 const loginForm = (req, res)=>{
-    res.render('login')
+    res.render('login', {mensajes: req.flash("mensajes")})
 }
 
+
 const loginUser = async(req, res)=>{
+    const errors = validationResult(req)
+    if(!errors.isEmpty()){
+        req.flash("mensajes", errors.array())
+        return res.redirect('/auth/login')
+    }
+
     const {email, password} = req.body
     try{
         const user = await User.findOne({email})
@@ -67,8 +87,8 @@ const loginUser = async(req, res)=>{
         res.redirect('/auth/login')
     }
     catch(error){
-        console.log(error)
-        res.send(error.message)
+        req.flash("mensajes", [{msg: error.message}])
+        return res.redirect('/auth/login')
     }
 }
 

@@ -2,19 +2,33 @@ const express = require('express');
 const path = require('path')
 const hbs = require('hbs');
 const app = express();
+const session = require('express-session')
+const flash = require('connect-flash')
 const PORT = process.env.PORT || 3000;
 require('dotenv').config();
 require('./database/db');
+
 
 //Hbs
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 hbs.registerPartials(path.join(__dirname, 'views/partials'));
 
+
+//Sesiones configuracion
+app.use(session ({
+    secret: 'keyboard glumy',
+    resave: false,
+    saveUninitialized: false,
+    name: "secret-name-aoaoao"
+}))
+
+
 //Middlewares
 app.use(express.urlencoded({extended: true}))
 app.use(express.static(__dirname + '/public'))
 app.use(express.json());
+app.use(flash())
 
 
 
