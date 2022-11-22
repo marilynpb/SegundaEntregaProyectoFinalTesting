@@ -4,6 +4,9 @@ const hbs = require('hbs');
 const app = express();
 const session = require('express-session')
 const flash = require('connect-flash')
+const passport = require('passport');
+const { initialize } = require('passport');
+const User = require('./models/User');
 const PORT = process.env.PORT || 3000;
 require('dotenv').config();
 require('./database/db');
@@ -23,12 +26,25 @@ app.use(session ({
     name: "secret-name-aoaoao"
 }))
 
+//Passport configuracion
+app.use(passport.initialize())
+app.use(passport.session())
+
+passport.serializeUser((user, done) => 
+    done(null, {id: user._id, email: user.email}));
+
+passport.deserializeUser( async (user, done)=>{
+    const userDB = await User.findById(user.id)
+    return done(null, {id: userDB._id, email: userDB.email})
+})
+
 
 //Middlewares
 app.use(express.urlencoded({extended: true}))
 app.use(express.static(__dirname + '/public'))
 app.use(express.json());
 app.use(flash())
+
 
 
 

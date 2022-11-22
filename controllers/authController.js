@@ -93,11 +93,23 @@ const loginUser = async(req, res)=>{
 }
 
 
+//Cerrar sesión
+const cerrarSesion = (req, res)=>{
+    req.logout(function(err){
+        if(err){
+            return next(err)
+        }
+        res.redirect('/auth/login')
+    })
+}
+
+
 
 module.exports = {
     registerForm,
     registerUser,
     confirmarCuenta,
     loginForm,
-    loginUser
+    loginUser,
+    cerrarSesion
 }
