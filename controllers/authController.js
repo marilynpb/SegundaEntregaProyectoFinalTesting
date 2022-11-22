@@ -2,11 +2,18 @@ const User = require("../models/User")
 const {validationResult} = require('express-validator')
 const randomId = require('random-id');
 const bcrypt = require('bcryptjs')
+const nodemailer = require("nodemailer")
+require('dotenv').config()
 
 
 const registerForm = (req, res)=>{
-    res.render('register', {mensajes: req.flash("mensajes")})
+    res.render('register')
 }
+
+const loginForm = (req, res)=>{
+    res.render('login')
+}
+
 
 //Registro de usuarios
 const registerUser = async(req, res)=>{
@@ -20,6 +27,7 @@ const registerUser = async(req, res)=>{
     const {email, password} = req.body
     var patrón = 'aA0'
     var largo = 30;
+
     try{
         let user = await User.findOne({email:email})
 
@@ -28,9 +36,31 @@ const registerUser = async(req, res)=>{
         user = new User({email, password, tokenConfirm: randomId(largo, patrón)})
         await user.save()
 
+        //Envía correo de confirmación
+        const transport = nodemailer.createTransport({
+            host: "smtp.mailtrap.io",
+            port: 2525,
+            auth: {
+            user: "300b9ef3b1b13e",
+            pass: "a2f7ffdebdab15"
+            }
+        });
+        
+        await transport.sendMail({
+            from: '"🔹 FreeCVMaker 🔹" <FreeCVMaker@example.com>',
+            to: user.email,
+            subject: "Verificá tu correo electrónico",
+            html: `<h2>Gracias por registrarte en FreeCVMaker<h2/>
+                    <h2>Ya casi podés comenzar a crear tu CV, primero activá tu cuenta.
+                    <p>Para activar tu cuenta necesitamos que valides tu correo electrónico haciendo click aquí:</p>
+                    <a href="http://localhost:3000/auth/confirmar/${user.tokenConfirm}">Verificar cuenta</a>
+                    <br><br><p>Atentamente,</p><p>Equipo FreeCVMaker!💖</p>`,
+        });
+
+
         req.flash("mensajes", 
         [{msg: "Necesitás activar tu cuenta, por favor revisá tu correo electrónico y accede al link de confirmación que te hemos enviado"}])
-        //Enviar correo de confirmacion
+
         res.redirect('/auth/login')
     }
     catch(error){
@@ -39,6 +69,8 @@ const registerUser = async(req, res)=>{
     }
 }
 
+
+//Confirmarcion de cuenta a través de un Token
 const confirmarCuenta = async (req, res)=>{
     const {token} = req.params
     try{
@@ -62,11 +94,8 @@ const confirmarCuenta = async (req, res)=>{
     }
 }
 
-const loginForm = (req, res)=>{
-    res.render('login', {mensajes: req.flash("mensajes")})
-}
 
-
+//Iniciar sesion Usuarios
 const loginUser = async(req, res)=>{
     const errors = validationResult(req)
     if(!errors.isEmpty()){
@@ -81,10 +110,14 @@ const loginUser = async(req, res)=>{
     
         if(!user.cuentaConfirmada) throw new Error ("Por favor, verifique su cuenta")
         
-        if(!(await user.comparePassword(password))) 
+        //if(!(await user.comparePassword(password))) 
+        if( user.password !=(password)) 
             throw new Error ("Contraseña incorrecta")
-    
-        res.redirect('/auth/login')
+
+        req.login(user, function(err){
+            if(err) throw new Error('Error al crear la sesión')
+            res.redirect('/')
+        })
     }
     catch(error){
         req.flash("mensajes", [{msg: error.message}])

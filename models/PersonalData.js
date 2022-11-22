@@ -56,6 +56,11 @@ const PersonalDataSchema = new Schema({
         type: Number,
         unique:false,
         required: false
+    },
+    user: {
+        type: Schema.Types.ObjectId, 
+        ref: "User",
+        required: true,
     }
 })
 

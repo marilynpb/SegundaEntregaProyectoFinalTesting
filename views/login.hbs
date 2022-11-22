@@ -9,6 +9,7 @@
         <div class="login"> 
             <form action="" method="post">  
                 <h2>Ingresá a tu cuenta</h2>
+                <input type="hidden" name="_csrf" value="{{csrfToken}}"/>
                 <label>Email</label>
                 <input type="email" maxlength="30" placeholder="Email@dominio.com" id="email" name="email"> 
                 <label>Contraseña</label>

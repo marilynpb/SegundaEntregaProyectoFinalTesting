@@ -7,9 +7,11 @@ const flash = require('connect-flash')
 const passport = require('passport');
 const { initialize } = require('passport');
 const User = require('./models/User');
-const PORT = process.env.PORT || 3000;
+const csrf = require('csurf');
 require('dotenv').config();
 require('./database/db');
+
+const PORT = process.env.PORT || 3000;
 
 
 //Hbs
@@ -40,12 +42,19 @@ passport.deserializeUser( async (user, done)=>{
 
 
 //Middlewares
-app.use(express.urlencoded({extended: true}))
 app.use(express.static(__dirname + '/public'))
+app.use(express.urlencoded({extended: true}))
+app.use(csrf())
 app.use(express.json());
 app.use(flash())
 
 
+//Configuración Csrf
+app.use((req, res, next)=>{
+    res.locals.csrfToken = req.csrfToken()
+    res.locals.mensajes = req.flash("mensajes")
+    next()
+})
 
 
 //Rutas

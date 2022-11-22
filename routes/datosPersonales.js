@@ -6,15 +6,16 @@ const {
     editarDatosPersonales, 
     guardarDatosEditados 
 } = require('../controllers/datosPersonalesControllers');
+const verificarUser = require('../middlewares/verificarUser')
 
 const router = express.Router();
 
 
 router.post('/datosPersonales', agregarDatosPersonales)
-router.get('/datosPersonales', leerDatosPersonales)
-router.get('/eliminar/:id', eliminarDatosPersonales)
-router.get('/editar/:id', editarDatosPersonales)
-router.post('/editar/:id', guardarDatosEditados)
+router.get('/datosPersonales', verificarUser, leerDatosPersonales)
+router.get('/eliminar/:id', verificarUser, eliminarDatosPersonales)
+router.get('/editar/:id', verificarUser, editarDatosPersonales)
+router.post('/editar/:id', verificarUser, guardarDatosEditados)
 
 
 

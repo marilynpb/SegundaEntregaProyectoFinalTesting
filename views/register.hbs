@@ -11,6 +11,7 @@
             <form action="" method="post">  
                 <h2>Registráte</h2>
                 <p class="ingresa">Ingresá tu email y una contraseña</p>
+                <input type="hidden" name="_csrf" value="{{csrfToken}}"/>
                 <label>Email</label>
                 <input type="string" maxlength="30" placeholder="Email@dominio.com" name="email">
                 <label>Contraseña</label>

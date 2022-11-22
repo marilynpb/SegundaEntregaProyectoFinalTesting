@@ -3,6 +3,8 @@
     
 <body>
     {{>navbar}}
+
+    {{>alertas}}
     
     <main>   
         <div class="container">
@@ -13,6 +15,7 @@
             </div>
             <form action="" method="post" class="formulario">
                 <div class="formIzq">
+                    <input type="hidden" name="_csrf" value="{{csrfToken}}"/>
                     <label>Nombre*</label>
                     <input type="text" id="nombre" name="nombre">
                     <label>Apellido*</label>
@@ -165,6 +168,9 @@
         </div>
 
     </main>
+
+
+    <a href="/auth/loguot" ><div class="icono cerrarSesion"><p>Cerrar sesión</p><img src="../img/Iconos/box-arrow-in-right.svg"></div></a>
 
     {{>footer}}
 
