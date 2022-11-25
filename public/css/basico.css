@@ -1,0 +1,108 @@
+*{
+    box-sizing: border-box;
+    padding: 0%;
+    margin: 0%;
+}
+
+main{
+    width: 70%;
+    max-width: 1200px;
+    height: 215vh;
+    margin-top: 5vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container{
+    padding-bottom: 10vh;
+    height: 80%;
+    background-color: rgb(239, 237, 237);
+}
+
+.bordeColorTop, .bordeColorBottom{
+    clear: both;
+    width: 100%;
+    height: 8vh;
+    background-color: rgb(187, 149, 149);
+}
+
+.izquierda{
+    text-align: center;
+    float: left;
+    width: 25%;
+    height: 100%;
+    padding: 2vh;
+    background-color: rgb(231, 222, 222);
+}
+
+.izquierda h2{
+    color: rgb(187, 149, 149);
+    font-weight: bolder;
+    margin-bottom: 0%;
+    margin-top: 2vh;
+}
+
+.datos{
+    color: rgb(57, 55, 55);
+    font-weight: lighter;
+}
+
+.tituloIzq{
+    color: black;
+    font-weight: bolder;
+    margin-top: 2vh;
+}
+
+.derecha{
+    float: right;
+    width: 75%;
+    height: 100%;
+    background-color: rgb(239, 237, 237);
+    text-align: justify;
+    padding-top: 2vh;
+    padding-right: 6vh;
+    padding-left: 6vh;
+}
+
+.black{
+    color: rgb(57, 55, 55);;
+}
+
+.titulo{
+    text-align: start;
+    color: rgb(187, 149, 149);
+    margin-left: 2vh;
+}
+
+.derecha h2, h3{
+    color: rgb(187, 149, 149);
+    text-align: start;
+}
+
+.margen{
+    margin-top: 4vh;
+}
+
+li{
+    list-style: none;
+}
+
+hr{
+    margin-bottom: 2vh;
+}
+
+table{
+    width: 100%;
+    height: auto;
+    margin-bottom: 3vh;
+}
+
+.alineacionFin{
+    text-align: end;
+    float: right;
+}
+
+
+p{
+    text-align: start;
+}

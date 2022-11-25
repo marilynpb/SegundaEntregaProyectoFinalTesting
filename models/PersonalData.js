@@ -12,16 +12,11 @@ const PersonalDataSchema = new Schema({
         unique:false,
         required: true
     },
-    email:{
+    fechaNac:{
         type: String,
-        unique:true,
-        required: true
-    },
-    /*fechaNac:{
-        type: Date,
         unique:false,
         required: false
-    },*/
+    },
     sexo:{
         type: String,
         unique:false,

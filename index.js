@@ -37,7 +37,7 @@ passport.serializeUser((user, done) =>
 
 passport.deserializeUser( async (user, done)=>{
     const userDB = await User.findById(user.id)
-    return done(null, {id: userDB._id, email: userDB.email})
+    return done(null, {id: userDB._id, email: userDB.email, nombre:userDB.nombre})
 })
 
 
@@ -62,6 +62,10 @@ app.use('/', require('./routes/home'))
 app.use('/datosPersonales', require('./routes/datosPersonales'))
 app.use('/verMisDatos', require('./routes/verMisDatos'))
 app.use('/auth', require('./routes/auth'))
+app.use('/datosPerfil', require('./routes/datosPerfil'))
+app.use('/datosLaborales', require('./routes/datosLaborales'))
+app.use('/elegirPlantilla', require('./routes/elegirPlantilla'))
+app.use('/pages', require('./routes/pages'))
 
 
 app.listen(PORT, ()=>

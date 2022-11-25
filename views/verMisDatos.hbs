@@ -1,61 +1,73 @@
 <link rel="stylesheet" href="../css/miCuenta.css">
 <title>Mi cuenta</title>
 
-<main>
+    <main>
+
         <div class="container">
             <div class="menuLateral">
-                <a href="../index.html"><img src="../img/LogoMakr-8VCzkk.png" class="logo" alt="logo"></a>
+                <a href="/"><img src="../img/LogoMakr-8VCzkk.png" class="logo" alt="logo"></a>
                 <ul>
-                    <li><img src="../img/Iconos/person-circle.svg" class="userIcon"><h3>Nombre Usuario</h3></li>
+                    <li><img src="../img/Iconos/person-circle.svg" class="userIcon"></li>
                     <li><a href="./miCurriculum.html">Ver mi CV</a></li>
-                    <li><a href="./datosPersonales.html">Crear Curriculum</a></li>
+                    <li><a href="/datosPersonales/datosPersonales">Crear Curriculum</a></li>
                     <li><a href="/auth/loguot" ><div class="icono cerrarSesion"><p>Cerrar sesión</p><img src="../img/Iconos/box-arrow-in-right.svg"></a></div></li>
                 </ul>
             </div>
+
+            {{>alertas2}}
+
             <div class="datosCuenta"> 
-                <form>
+                <form action="" method="get">
+                    <input type="hidden" name="_csrf" value="{{csrfToken}}"/>
                     <h1>Mis datos</h1>
-                    <div>
+                    <div class="divCuenta">
                         <h3>Cuenta</h3>
-                        <button class="editar"><img src="../img/Iconos/pencil-square.svg"></button>
+                        <div>
                         <label>Correo Electrónico</label>
-                        <input type="text" class="correElectronico">
+                        {{#each personaldatas}}
+                        <input type="text" class="correElectronico" value={{this.email}}>
+                        {{/each}}
                         <span>-</span>
-                        <p><a href="/">Eliminar cuenta</a></p>
-                        <button class="guardar">Guardar</button>
+                        <p><a href="eliminar/{{this._id}}">Eliminar cuenta</a></p>
+                        </div>
                     </div>  
-                    <div>
+                    <div class="divContraseña">
                         <h3>Cambiar contraseña</h3>
+                        <div>
                         <button onclick="modificarDatos()" class="editar"><img src="../img/Iconos/pencil-square.svg"></button>
                         <label>Contraseña actual</label>
                         <input type="password" class="contraseña">
+                        <span>-</span>
                         <label>Nueva contraseña</label>
                         <input type="password" class="contraseña">
-                        <label>Confirmar contraseña</label>
-                        <input type="password" class="confirmarContraseña">
-                        <button class="guardar">Guardar</button>
-                    </div>
-                    {{#each personaldatas}}
-                    <div>
-                        <h3>Datos Personales</h3>
-                        <button onclick="modificarDatos()" class="editar"><img src="../img/Iconos/pencil-square.svg"></button>
-                        <label>Nombre</label>
-                        <input type="text" name="nombre" value={{this.nombre}}>
-                        <label>Apellido</label>
-                        <input type="text" class="apellido" name="apellido" value={{this.apellido}}>
-                        <label>Teléfono</label>
-                        <input type="text" name="telefono" value={{this.telefono}}>
-                        <label>Código Pos</label>
-                        <input type="text" name="cp" value={{this.cp}}>
-                        <label>Dirección(calle)</label>
-                        <input type="text" name="calle" value={{this.calle}}>
-                        <label>Altura</label>
-                        <input type="text" name="altura" value={{this.altura}}>
                         <span>-</span>
-                        <button class="guardar">Guardar</button>
+                        <label>Confirmar contraseña</label>
+                        <span>-</span>
+                        <input type="password" class="confirmarContraseña">
+                        </div>
                     </div>
-                    {{/each}}
+                    <div class="divDatos">
+                        <h3>Datos Personales</h3>
+                        <div>
+                        {{#each personaldatas}}
+                        <a href="editar/{{this._id}}" id="editar"><img src="../img/Iconos/pencil-square.svg"></a>
+                        <label>Nombre</label>
+                        <input type="text" name="nombre" value={{this.nombre}} disabled>
+                        <label>Apellido</label>
+                        <input type="text" class="apellido" name="apellido" value={{this.apellido}} disabled>
+                        <span>-</span>
+                        <label>Teléfono</label>
+                        <input type="text" name="telefono" disabled value={{this.telefono}}>
+                        <label>Código Postal</label>
+                        <input type="text" name="cp" disabled value={{this.cp}}>
+                        <label>Dirección(calle)</label>
+                        <input type="text" name="calle" disabled value={{this.calle}}>
+                        <label>Altura</label>
+                        <input type="text" name="altura" disabled value={{this.altura}} >
+                        {{/each}}
+                        </div>
+                    </div>
                 </form>
-            </div> 
-        </div>    
+        </div>
     </main>
+    <script src="../public/js/habilitarInputs.js"></script>
