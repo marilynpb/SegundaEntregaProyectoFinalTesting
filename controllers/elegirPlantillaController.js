@@ -15,7 +15,7 @@ const agregarPlantilla = async(req, res)=>{
 
         await miPlantilla.save()
         req.flash("mensajes", [{msg: "Se guardó la plantilla"}])
-        res.redirect("/")
+        res.redirect("/elegirPlantilla/miCV")
     }
     catch(error){
         req.flash("mensajes", [{msg: error.message}])

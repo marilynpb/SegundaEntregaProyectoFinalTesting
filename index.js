@@ -11,6 +11,7 @@ const csrf = require('csurf');
 require('dotenv').config();
 require('./database/db');
 
+
 const PORT = process.env.PORT || 3000;
 
 
@@ -63,9 +64,11 @@ app.use('/datosPersonales', require('./routes/datosPersonales'))
 app.use('/verMisDatos', require('./routes/verMisDatos'))
 app.use('/auth', require('./routes/auth'))
 app.use('/datosPerfil', require('./routes/datosPerfil'))
+app.use('/datosDescripcion', require('./routes/datosDescripcion'))
 app.use('/datosLaborales', require('./routes/datosLaborales'))
 app.use('/elegirPlantilla', require('./routes/elegirPlantilla'))
 app.use('/pages', require('./routes/pages'))
+app.use('/verificarDatos', require('./routes/verificarDatos'))
 
 
 app.listen(PORT, ()=>

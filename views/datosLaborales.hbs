@@ -10,7 +10,7 @@
         <div class="container">
             <div class="encabezado">
                 <h1 class="titulo">Información personal</h1>
-                <p class="contador">2/4</p>
+                <p class="contador">2/5</p>
                 <meter min="0" max="100" value="25" low="26" high="150" id="barra"></meter>
             </div>
             <form class="formulario" action="" method="post">
@@ -18,35 +18,35 @@
                 <details open>
                     <summary>Formación</summary>
                     <div class="formacion">
-                            <label>Carrera/Título*</label>
-                        <input type="text" class="carrera" name="carrera">
+                        <label>Carrera/Título*</label>
+                        <input type="text" class="carrera" name="carrera" id="carrera">
                         <div class="formIzq">
                         <label>Instituto/Universidad*</label>
-                        <input type="text" name="instituto">
+                        <input type="text" name="instituto" id="instituto">
                     </div>
                     <div class="formDer">
                         <label>Año de Egreso*</label>
                         <span>-</span>
-                        <input type="text name="añoEgreso" placeholder="aaaa">
+                        <input type="text" name="finalizado" placeholder="aaaa" id="finalizado">
                         <span>-</span>
                     </div>
                         <div class="añadirMas">
-                            <button id="agregar" type="submit">+ Añadir más estudios</button>
+                            <button id="agregar" type="button" onclick="validar()">+ Añadir más estudios</button>
                         </div>
                     </div>
                 </details>
 
-                <div class="formacion agregado deshabilitado">
+                <div class="formacion agregado deshabilitado" id="nuevoForm1">
                         <label>Carrera/Título</label>
-                        <input type="text" class="carrera">
+                        <input type="text" class="carrera2">
                         <div class="formIzq">
                         <label>Instituto/Universidad</label>
-                        <input type="text">
+                        <input type="text" name="instituto2">
                     </div>
                     <div class="formDer">
                         <label>Fecha de Egreso</label>
                         <span>-</span>
-                        <input type="text name="añoEgreso" placeholder="aaaa">
+                        <input type="text" name="añoEgreso2" placeholder="aaaa">
                     <span>-</span>
                     </div>
                         <div class="añadirMas">
@@ -57,15 +57,15 @@
 
                 <div class="formacion agregado deshabilitado">
                         <label>Carrera/Título</label>
-                        <input type="text" class="carrera">
+                        <input type="text" class="carrera3">
                         <div class="formIzq">
                         <label>Instituto/Universidad</label>
-                        <input type="text">
+                        <input type="text" name="instituto3">
                     </div>
                     <div class="formDer">
                         <label>Fecha de Egreso</label>
                         <span>-</span>
-                        <input type="text name="añoEgreso" placeholder="aaaa">
+                        <input type="text" name="añoEgreso3" placeholder="aaaa">
                     <span>-</span>
                     </div>
                         <div class="añadirMas">
@@ -77,14 +77,14 @@
                     <summary>Experiencia Laboral</summary>
                     <div class="experiencia">
                         <label>Puesto de trabajo*</label>
-                        <input type="text" class="carrera" name="puesto">
+                        <input type="text" name="puesto">
                         <label>Empresa*</label>
-                        <input type="text" class="carrera" name="empresa">
+                        <input type="text" name="empresa">
                         <label>Desde(año)*</label>
-                        <input type="text name="añoDesde" placeholder="aaaa" class="selectLarge">
+                        <input type="text" name="desde" placeholder="aaaa" class="selectLarge">
                         <span>-</span>
                         <label>Hasta(año)*</label>
-                        <input type="text name="añoHasta" placeholder="aaaa" class="selectLarge">
+                        <input type="text" name="hasta" placeholder="aaaa" class="selectLarge">
                         <span>-</span>
                         <label>Descripcion del cargo y actividades realizadas*</label>
                         <textarea name="descripcion"></textarea>
@@ -95,17 +95,17 @@
 
                     <div class="experiencia deshabilitado">
                         <label>Puesto de trabajo*</label>
-                        <input type="text" class="carrera" name="puesto">
+                        <input type="text" name="puesto2">
                         <label>Empresa*</label>
-                        <input type="text" class="carrera" name="empresa">
+                        <input type="text" name="empresa2">
                         <label>Desde(año)*</label>
-                        <input type="text name="añoDesde" placeholder="aaaa" class="selectLarge">
+                        <input type="text" name="desde2" placeholder="aaaa" class="selectLarge">
                         <span>-</span>
                         <label>Hasta(año)*</label>
-                        <input type="text name="añoHasta" placeholder="aaaa" class="selectLarge">
+                        <input type="text" name="hasta2" placeholder="aaaa" class="selectLarge">
                         <span>-</span>
                         <label>Descripcion del cargo y actividades realizadas*</label>
-                        <textarea name="descripcion"></textarea>
+                        <textarea name="descripcio2n"></textarea>
                         <div class="añadirMas">
                             <button>+ Añadir más experiencia</button>
                         </div>
@@ -114,17 +114,17 @@
 
                         <div class="experiencia deshabilitado">
                         <label>Puesto de trabajo*</label>
-                        <input type="text" class="carrera" name="puesto">
+                        <input type="text" name="puesto3">
                         <label>Empresa*</label>
-                        <input type="text" class="carrera" name="empresa">
+                        <input type="text" name="empresa3">
                         <label>Desde(año)*</label>
-                        <input type="text name="añoDesde" placeholder="aaaa" class="selectLarge">
+                        <input type="text" name="desde3" placeholder="aaaa" class="selectLarge">
                         <span>-</span>
                         <label>Hasta(año)*</label>
-                        <input type="text name="añoHasta" placeholder="aaaa" class="selectLarge">
+                        <input type="text" name="hasta3" placeholder="aaaa" class="selectLarge">
                         <span>-</span>
                         <label>Descripcion del cargo y actividades realizadas*</label>
-                        <textarea name="descripcion"></textarea>
+                        <textarea name="descripcion3"></textarea>
                     </div>
                     </details>
                 </details>
@@ -158,12 +158,12 @@
                         <div class="idiomas deshabilitado">
                         <div class="formIzq">
                             <label>Idioma</label>
-                            <input type="text" name="idioma">
+                            <input type="text" name="idioma2">
                         </div>
                         <div class="formDer">                                
                             <label>Nivel</label>
                             <span>-</span>
-                        <select name="nivel" id="idiomaNivel">
+                        <select name="nivel" id="idiomaNivel2">
                             <option disabled selected>Elegir</option>
                             <option>Básico</option>
                             <option>Intermedio</option>
@@ -180,12 +180,12 @@
                         <div class="idiomas deshabilitado">
                         <div class="formIzq">
                             <label>Idioma</label>
-                            <input type="text" name="idioma">
+                            <input type="text" name="idioma3">
                         </div>
                         <div class="formDer">                                
                             <label>Nivel</label>
                             <span>-</span>
-                        <select name="nivel" id="idiomaNivel">
+                        <select name="nivel" id="idiomaNivel3">
                             <option disabled selected>Elegir</option>
                             <option>Básico</option>
                             <option>Intermedio</option>

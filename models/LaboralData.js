@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const {Schema} = mongoose
 
+
 const LaboralDataSchema = new Schema({
     carrera:{
         type: String,
@@ -12,7 +13,7 @@ const LaboralDataSchema = new Schema({
         require: true,
         unique: false
     },
-    añoEgreso:{
+    finalizado:{
         type: String,
         require: true,
         unique: false
@@ -27,12 +28,12 @@ const LaboralDataSchema = new Schema({
         unique: false,
         require: false
     },
-    añoDesde:{
+    desde:{
         type: String,
         require: true,
-        unique: false
+        unique: false,
     },
-    añoHasta:{
+    hasta:{
         type: String,
         require: true,
         unique: false
@@ -52,12 +53,13 @@ const LaboralDataSchema = new Schema({
         unique: false,
         require: false
     },
-    user: {
+    user:{
         type: Schema.Types.ObjectId, 
         ref: "User",
         required: true,
-    },
+    }
 })
+
 
 const LaboralData = mongoose.model('LaboralData', LaboralDataSchema)
 module.exports = LaboralData

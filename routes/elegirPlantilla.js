@@ -19,4 +19,15 @@ router.get('/moderno2', verificarUser, (req, res)=>{
     res.render('moderno2')
 })
 
+router.get('/miCV',verificarUser, (req, res)=>{
+    res.render('miCV')
+})
+
+router.get('/soloElegirPlantilla', verificarUser, (req, res)=>{
+    res.render('soloElegirPlantilla')
+})
+
+router.post('/soloElegirPlantilla', verificarUser, agregarPlantilla)
+
+
 module.exports = router

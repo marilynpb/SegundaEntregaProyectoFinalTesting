@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/marilynpb/PrimerEntrega-ProyectoFinal#readme",
   "dependencies": {
+    "aos": "^2.3.4",
     "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",
     "csurf": "^1.11.0",

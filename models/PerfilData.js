@@ -7,10 +7,10 @@ const PerfilDataSchema = new Schema({
         unique: false,
         required: true,
     },
-    imagen:{
+    /*imagen:{
         type: String,
         default: null,
-    },
+    },*/
     user: {
         type: Schema.Types.ObjectId, 
         ref: "User",

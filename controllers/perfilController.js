@@ -4,6 +4,7 @@ const path = require('path')
 const Jimp = require('jimp')
 const User = require('../models/User')
 
+
 const formPerfil = async(req, res)=>{
     /*try{
         const user = await User.findById(req.user.id)
@@ -18,14 +19,12 @@ const formPerfil = async(req, res)=>{
 
 const subirFoto =  async(req, res)=>{
     
-    const descripcion = req.body
+    /*const descripcion = req.body*/
     const form = new formidable.IncomingForm()
     form.maxFileSize = 50 * 1024 * 1024//50mb
 
     form.parse(req, async(err, fields, files)=>{
         try{
-            console.log(fields)
-            console.log(files)
             if(err){
                 throw new Error('Hubo un error al subir el archivo')
             }
@@ -46,10 +45,10 @@ const subirFoto =  async(req, res)=>{
                 throw new Error('El archivo no debe pesar mas de 50MB')
             }
 
-            if(!descripcion){
+            /*if(!descripcion){
                 throw new Error("Por favor, complete los campos obligatorios: (*)")
                 console.log(descripcion)
-            }
+            }*/
 
             const extension = file.mimetype.split("/")[1]
 
@@ -64,20 +63,23 @@ const subirFoto =  async(req, res)=>{
             const user = await User.findById(req.user.id)
 
             user.imagen = `${req.user.id}.${extension}`
-            user.descripcion= req.body
-            console.log(user.descripcion)
+            /*user.descripcion= req.body
+            console.log(user.descripcion)*/
 
             await user.save()
 
             req.flash("mensajes", [{msg: "Archivo subido exitosamente"}])
-            return res.redirect('elegirPlantilla')
+            return res.redirect('/datosDescripcion/datosDescripcion')
         }
         catch(error){
             req.flash("mensajes", [{msg: error.message}])
-            res.redirect('datosPerfil')
+            res.redirect('/datosPerfil/datosPerfil')
         }
     })
 }
+
+
+
 
 
 

@@ -1,24 +1,23 @@
-const { event } = require("jquery")
-
-window.addEventListener('DOMContentLoaded', (event)=>{
-    console.log("hola1")
-    
-    let agregar = document.getElementById('agregar')
-    let carrera = document.getElementsByName('carrera')
-    let instituto = document.getElementsByName('instituto')
-
-    agregar.addEventListener('click', validar)
 
     function validar(){
-        console.log("hola")
-        if(carrera.value === null || carrera.value === "" || instituto.value === null || instituto.value === ""){
+        let agregar = document.getElementById('agregar')
+        let carrera = document.getElementById('carrera')
+        let instituto = document.getElementById('instituto')
+        let egreso = document.getElementById('finalizado')
+        let nuevoForm1 = document.getElementById('nuevoForm1')
+
+        if(carrera.value == null || carrera.value == "" || instituto.value == null || instituto.value == ""|| egreso.value == null || egreso.value == ""){
+            alert(carrera.value, instituto.value, egreso.value)
             alert("Debe completar los datos actuales para agregar otro formulario")
         }
         else{
-            agregar.classList.remove("deshabilitado")
+            nuevoForm1.classList.remove("deshabilitado")
+            console.log("Si")
         }
     }
-})
+
+
+
 
 
 

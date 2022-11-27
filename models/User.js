@@ -26,11 +26,11 @@ const UserSchema = new Schema({
         type: String,
         default: null,
     },
-    descripcion:{
+    /*descripcion:{
         type: String,
         default: null,
         require: true
-    },
+    },*/
 })
 
 /*UserSchema.pre("save", async function(next){
