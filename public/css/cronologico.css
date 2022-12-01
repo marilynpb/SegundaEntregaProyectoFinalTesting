@@ -1,0 +1,201 @@
+*{
+    box-sizing: border-box;
+    padding: 0%;
+    margin: 0%;
+}
+
+body{
+    background-color: rgb(214, 208, 208);
+    height: 2300px;
+}
+
+main{
+    width: 70%;
+    min-width: 1240px;
+    max-width: 1240px;
+    height: 1754px;
+    min-height: 1754px;
+    margin-top: 5vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container{
+    margin-bottom: 10vh;
+    height: 100%;
+    background-color: white;
+}
+
+.izquierda{
+    text-align: center;
+    float: left;
+    width: 30%;
+    height: 100%;
+    padding: 2vh;
+    color: white;
+    background-color:rgb(57, 143, 165);
+}
+
+.izquierda h3{
+    text-align: center;
+    margin-top: 3vh;
+    margin-bottom: 7vh;
+    font-weight: lighter;
+}
+
+.izquierda ol li {
+    margin-bottom: 5vh;
+}
+
+.perfilImg{
+    margin-top: 5vh;
+    margin-bottom: 2vh;
+    width: 80%;
+}
+
+.izquierda h2{
+    font-weight: bolder;
+    margin-bottom: 2vh;
+    margin-top: 10vh;
+    text-align: start;
+    color: white;
+}
+
+.izquierda p{
+    color: white;
+    font-size: 20px;
+}
+
+p{
+    font-size: 20px;
+}
+
+.hrDatos{
+    float: right;
+    width: 39%;
+    height: 2px;
+    background-color: white;
+    border: none;
+    margin-top: 5vh;
+}
+
+.hrIdiomas{
+    float: right;
+    width: 60%;
+    height: 2px;
+    background-color: white;
+    border: none;
+    margin-top:12vh;
+}
+
+.datos{
+    font-weight: lighter;
+}
+
+img{
+    border-radius: 50%;
+}
+
+.apellido{
+    margin-bottom: 7vh;
+}
+
+.derecha{
+    float: right;
+    width: 70%;
+    height: 100%;
+    text-align: justify;
+    padding-top: 2vh;
+    padding-right: 10vh;
+    padding-left: 6vh;
+    color: black;
+}
+
+
+.conPadding{
+    padding-left: 3vh;
+}
+
+.black{
+    color: rgb(57, 55, 55);;
+}
+
+.titulo{
+    margin-top: 5vh;
+}
+
+.derecha h2{
+    margin-top: 5vh;
+}
+
+.derecha hr{
+    margin-top: 7vh;
+    width: 75%;
+    float: right;
+    height: 1px;
+    border: none;
+    background-color: rgb(230, 224, 224);
+}
+
+.derecha table{
+    padding-bottom: 50px;
+}
+
+.derecha th{
+    padding-bottom: 1vh;
+}
+
+.pDescripcion{
+    padding-top: 4vh;
+    padding-bottom: 10vh;
+}
+
+li{
+    list-style: none;
+    padding-bottom: 1vh;
+}
+
+table{
+    width: 100%;
+    height: auto;
+    padding-bottom: 1vh;
+}
+
+tr{
+    padding-bottom: 1.5vh;  
+}
+
+.icon{
+    width: 10%; 
+    text-align: center;
+}
+
+.alineacionFin{
+    text-align: end;
+    float: right;
+}
+
+.nombre{
+    color: rgb(92, 88, 88);
+}
+
+p{
+    text-align: start;
+}
+
+.margen th{
+    margin-bottom: 3vh;
+}
+
+.margen{
+    margin-bottom: 3vh;
+}
+
+.tableContacto{
+    padding-bottom: 3vh;
+}
+
+
+.formacionFecha{
+    width: 130px;
+}

@@ -4,16 +4,22 @@
     margin: 0%;
 }
 
+body{
+    background-color: rgb(214, 208, 208);
+    height: 2300px;
+}
+
 main{
     width: 70%;
-    min-width: 900px;
-    max-width: 1200px;
-    height: 215vh;
-    min-height: 215vh;
+    min-width: 1240px;
+    max-width: 1240px;
+    height: 1754px;
+    min-height: 1754px;
     margin-top: 5vh;
     margin-left: auto;
     margin-right: auto;
 }
+
 .container{
     padding-bottom: 10vh;
     height: 80%;
@@ -27,6 +33,15 @@ main{
     background-color: rgb(187, 149, 149);
 }
 
+p{
+    font-size: 20px;
+    padding-bottom: 3vh;
+}
+
+img{
+    margin-bottom: 3vh;
+}
+
 .izquierda{
     text-align: center;
     float: left;
@@ -34,6 +49,10 @@ main{
     height: 100%;
     padding: 2vh;
     background-color: rgb(231, 222, 222);
+}
+
+.izquierda hr{
+    margin-bottom: 30px;
 }
 
 .izquierda h2{

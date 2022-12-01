@@ -1,0 +1,222 @@
+*{
+    box-sizing: border-box;
+    padding: 0%;
+    margin: 0%;
+}
+
+body{
+    background-color: rgb(214, 208, 208);
+    height: 2300px;
+}
+
+main{
+    width: 70%;
+    min-width: 1240px;
+    max-width: 1240px;
+    height: 1754px;
+    min-height: 1754px;
+    margin-top: 5vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container{
+    padding-bottom: 10vh;
+    height: 80%;
+    background-color: white;
+}
+
+.linea{
+    background-color: rgb(6, 144, 103);
+    width: 100%;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    color: white;
+    margin-bottom: 100px;
+    clear: both;
+}
+
+.linea h1{
+    text-transform: uppercase;
+}
+
+.header{
+    width: 100%;
+    min-width: 100%;
+    height: 410px;
+    min-height: 410px;
+    color: black;
+    background-color: white;
+}
+
+
+.izquierda{
+    padding-left: 10vh;
+    padding-right: 10vh;
+}
+
+.perfil{
+    padding-left: 10vh;
+    padding-right: 10vh;
+}
+
+
+.headerDer{
+    color: white;
+    width: 100%;
+    min-width: 50%;
+    padding-top: 5px;
+    padding-bottom: 110px;
+    background-color: rgba(6, 144, 103, 0.196);
+}
+
+.headerDer table{
+    width: 35%;
+    height: 100%;
+    clear: both;
+    margin-right: 10px;
+    color: black;
+    float: right;
+}
+
+.tablas{
+    width: 70%;
+    display: flex;
+    align-items: flex-end;
+    text-align: end;
+    align-content: flex-end;
+    float: right;
+}
+
+table img{
+    background-color: rgb(4, 66, 4);
+    margin: 0%;
+    padding: 4px;
+}
+
+.headerDer tr{
+    border: 2px solid black;
+}
+
+.headerDer h1{
+    color: white;
+    font-size: 6vh;
+    margin-left: 0%;
+}
+
+.headerDer p{
+    color: white;
+}
+
+.headerDer hr{
+    width: 9%;
+    color: rgb(74, 72, 72);
+    height: 1px;
+    background-color: rgb(74, 72, 72);
+    border: none;
+}
+
+.tablePerfil{
+    margin-top: 0%;
+    margin-bottom: 0%;
+    padding-top: 0%;
+    padding-bottom: 0%;
+}
+
+.imgPerfil{
+    width: 240px;
+    height: 240px;
+    border: none;
+    margin: 5vh;
+    top: 0%;
+    margin-top: 70px;
+    margin-bottom: 0%;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.tableContacto th{
+    padding-top: 10px;
+    color: black;
+}
+
+.tableContacto p {
+    color: black;
+}
+
+.datos{
+    color: rgb(57, 55, 55);
+    font-weight: lighter;
+}
+
+hr{
+    width: 100%;
+    margin-bottom: 0px;
+    height: 6px;
+    border: none;
+    background-color: rgba(6, 144, 103, 0.196);
+}
+
+h2{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.tarea{
+    list-style: circle;
+    padding-left: 2vh;
+    padding-top: 5vh;
+}
+
+.black{
+    color: rgb(57, 55, 55);;
+}
+
+.titulo{
+    text-align: start;
+    color: black;
+    margin-left: 2vh;
+}
+
+.derecha h2, h3{    
+    color: black;
+    text-align: start;
+}
+
+.derecha h2{
+    margin-bottom: 10px;
+}
+
+.margen{
+    margin-top: 15px;
+}
+
+li{
+    list-style: none;
+}
+
+.derecha table{
+    padding-bottom: 20px;
+}
+
+table{
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.alineacionFin{
+    text-align: end;
+    float: right;
+}
+
+p{
+    text-align: start;
+    color: black;
+    font-size: 20px;
+}
+
+.conPadding{
+    padding-left: 30px;
+}

@@ -27,83 +27,92 @@ main{
 
 .header{
     width: 100%;
-    height: 300px;
-    background-color: rgb(246, 223, 228);
+    min-width: 100%;
+    height: 250px;
+    min-height: 35vh;
+    background-color: rgb(4, 173, 122);
+}
+
+p{
+    font-size: 20px;
 }
 
 .headerIzq{
     width: 25%;
+    min-width: 25%;
     float: left;
-    height: 90%;
+    height: 100%;
+    min-height: 100%;
     text-align: center;
-    padding-top: 5vh;
-    background-color: brown;
-    background-image: url('../img/wallpapers/fondo.png');
-    background-size: 100% 100%;
 }
 
 .headerDer{
     float: right;
-    color: black;
+    color: white;
     width: 75%;
+    min-width: 75%;
     height: 100%;
+    min-height: 100%;
     padding: 5vh;
 }
 
 .headerDer h1{
-    color: rgb(36, 35, 35);
+    color: white;
     font-size: 6vh;
     margin-bottom: 3vh;
     margin-left: 0%;
-    margin-top: 3vh;
 }
 
 .headerDer p{
-    color: rgb(36, 35, 35);
+    color: white;
 }
 
 .headerDer hr{
     width: 9%;
-    color: black;
-    height: 3px;
-    background-color: black;
+    color: rgb(74, 72, 72);
+    height: 1px;
+    background-color: rgb(74, 72, 72);
     margin-bottom: 3vh;
+    border: none;
 }
 
 .header img{
-    width: 66%;
-    height: 80%;
-}
-
-.bordeColorTop, .bordeColorBottom{
-    clear: both;
     width: 100%;
-    height: 8vh;
-    background-color: rgb(187, 149, 149);
+    height: 100%;
 }
 
 .izquierda{
-    border-top: 1px solid rgba(191, 150, 150, 0.632);
-    border-right: 1px solid rgba(191, 150, 150, 0.632);
     text-align: start;
     float: left;
+    min-width: 25%;
     width: 25%;
     height: 100%;
-    padding: 2vh;
-    background-color: rgb(246, 223, 228);
+    min-height: 100%;
+    background-color: rgba(185, 8, 8, 0.872);
 }
 
-.izquierda img{
-    background-color: brown;
-    padding: 0.5vh;
+.izquierda img{ 
+    width: 100%;
 }
 
 .izquierda h2{
-    color: black;
+    color: white;
     font-weight: bolder;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     margin-top: 4vh;
     text-align: start;
+    padding-left: 4vh;
+    margin-right: 4vh;
+}
+
+.izquierda th{
+    padding-left:4vh;
+    margin-right: 4vh;
+    color: white;
+}
+
+.izquierda table{
+    padding-bottom: 25px;
 }
 
 .tableContacto th{
@@ -124,24 +133,36 @@ main{
 .derecha{
     float: right;
     width: 75%;
+    min-width: 75%;
     height: 100%;
+    min-height: 100%;
     background-color: white;
     text-align: justify;
-    padding-top: 2vh;
-    padding-right: 6vh;
-    padding-left: 6vh;
+    padding-top: 5vh;
 }
 
-.derecha p{
-    padding-bottom: 35px;
+.derecha table{
+    margin-top: 10px;
+}
+
+.borde{
+    width: 90%;
+    margin-bottom: 30px;
+    padding-bottom: 0%;
+    margin-left: auto;
+    margin-right: auto;
+    border-left: 2px solid black;
 }
 
 hr{
-    width: 100%;
+    width: 90%;
     margin-bottom: 2vh;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 2vh;
-    height: 3px;
-    background-color: black;
+    height: 1.5px;
+    border: none;
+    background-color: white;    
 }
 
 .tarea{
@@ -151,7 +172,7 @@ hr{
 }
 
 .black{
-    color: rgb(57, 55, 55);
+    color: rgb(57, 55, 55);;
 }
 
 .titulo{
@@ -160,15 +181,21 @@ hr{
     margin-left: 2vh;
 }
 
-.derecha h2, h3{    
-    color: black;
+.derecha h2{    
+    color: rgba(185, 8, 8, 0.872);
     text-align: start;
 }
 
+.derecha h3{
+    text-align: start;
+}
 
-
-.derecha h2{
-    margin-bottom: 3vh;
+.derecha h1{
+    color: rgba(185, 8, 8, 0.872);
+    font-weight: bolder;
+    font-size: 40px;
+    margin-bottom: 40px;
+    padding-left: 45px;
 }
 
 .margen{
@@ -182,7 +209,11 @@ li{
 table{
     width: 100%;
     height: auto;
-    margin-bottom: 0h;
+    margin-bottom: 0;
+}
+
+.icon1,.icon2, .icon3{
+    width: 40px;
 }
 
 .alineacionFin{
@@ -192,9 +223,19 @@ table{
 
 p{
     text-align: start;
-    font-size: 20px;
 }
 
-.paddingTH{
-    padding-bottom: 5vh;
+.borde img{
+    background-color: rgb(46, 44, 44);
+    padding: 5px;
+    width: 100%;
+}
+
+.borde h2{
+    margin-left: 10px;
+    padding-bottom: 20px;
+}
+
+.borde p, .borde h3{
+    padding-left: 20px;
 }

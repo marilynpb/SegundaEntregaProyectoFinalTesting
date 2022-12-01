@@ -23,7 +23,13 @@ router.get('/moderno2', verificarUser, (req, res)=>{
 router.get('/basico',verificarUser, leerPlantilla)
 router.get('/moderno3',verificarUser, leerPlantilla)
 router.get('/creativo1',verificarUser, leerPlantilla)
+router.get('/creativo2',verificarUser, leerPlantilla)
 router.get('/moderno1',verificarUser, leerPlantilla)
+router.get('/moderno2',verificarUser, leerPlantilla)
+router.get('/moderno3',verificarUser, leerPlantilla)
+router.get('/cronologico',verificarUser, leerPlantilla)
+router.get('/funcional',verificarUser, leerPlantilla)
+router.get('/mixto',verificarUser, leerPlantilla)
 
 router.get('/soloElegirPlantilla', verificarUser, (req, res)=>{
     res.render('soloElegirPlantilla')

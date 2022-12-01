@@ -18,8 +18,13 @@ const agregarPlantilla = async(req, res)=>{
 
         let basico = "basico"
         let creativo1 = "creativo1"
+        let creativo2 = "creativo2"
         let moderno1 = "moderno1"
         let moderno3 = "moderno3"
+        let moderno2 = "moderno2"
+        let cronologico = "cronologico"
+        let funcional = "funcional"
+        let mixto = "mixto"
 
         switch (miPlantilla.elegirPlantilla) {
             case basico:
@@ -30,8 +35,28 @@ const agregarPlantilla = async(req, res)=>{
                 res.render('creativo1', {miPlantilla : miPlantilla})
             break;
 
+            case creativo2:
+                res.render('creativo2', {miPlantilla : miPlantilla})
+            break;
+
             case moderno1:
                 res.render('moderno1', {miPlantilla : miPlantilla})
+            break;
+
+            case cronologico:
+                res.render('cronologico', {miPlantilla : miPlantilla})
+            break;
+
+            case funcional:
+                res.render('funcional', {miPlantilla : miPlantilla})
+            break;
+
+            case mixto:
+                res.render('mixto', {miPlantilla : miPlantilla})
+            break;
+
+            case moderno2:
+                res.render('moderno2', {miPlantilla : miPlantilla})
             break;
 
             case moderno3:

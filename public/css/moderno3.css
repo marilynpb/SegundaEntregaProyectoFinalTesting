@@ -5,15 +5,16 @@
 }
 
 body{
-    background-color: rgb(230, 236, 236);
+    background-color: rgb(214, 208, 208);
+    height: 2300px;
 }
 
 main{
     width: 70%;
-    min-width: 900px;
-    max-width: 1200px;
-    height: 215vh;
-    min-height: 215vh;
+    min-width: 1240px;
+    max-width: 1240px;
+    height: 1754px;
+    min-height: 1754px;
     margin-top: 5vh;
     margin-left: auto;
     margin-right: auto;
@@ -31,7 +32,7 @@ main{
     float: left;
     width: 35%;
     height: 100%;
-    padding: 2vh;
+    padding: 10vh;
     color: white;
     background-color:rgb(92, 88, 88);
 }
@@ -48,7 +49,9 @@ main{
 }
 
 img{
+    width: 100%;
     border-radius: 50%;
+    margin-bottom: 3vh;
 }
 
 .apellido{
@@ -61,9 +64,13 @@ img{
     height: 100%;
     text-align: justify;
     padding-top: 2vh;
-    padding-right: 6vh;
+    padding-right: 10vh;
     padding-left: 6vh;
     color: black;
+}
+
+.derecha table{
+    padding-bottom: 4vh;
 }
 
 .black{
@@ -104,6 +111,7 @@ table{
 
 p{
     text-align: start;
+    font-size: 20px;
 }
 
 .margen{
