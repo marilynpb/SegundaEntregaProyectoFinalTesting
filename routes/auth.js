@@ -7,8 +7,10 @@ const {
     registerUser, 
     confirmarCuenta, 
     loginUser, 
-    cerrarSesion
+    cerrarSesion,
+    eliminarCuenta
 } = require('../controllers/authController');
+const verificarUser = require('../middlewares/verificarUser');
 
 const router = express.Router();
 
@@ -49,7 +51,10 @@ router.post('/login',[
         .escape()
 ] ,loginUser)
 
+
 router.get('/loguot', cerrarSesion)
+
+//router.get('/eliminarCuenta/:id', verificarUser, eliminarCuenta)
 
 
 module.exports = router

@@ -6,14 +6,14 @@ const User = require('../models/User')
 
 
 const formPerfil = async(req, res)=>{
-    /*try{
+    try{
         const user = await User.findById(req.user.id)
         res.render('datosPerfil', {user: req.user, imagen: user.imagen})
     }
     catch(error){
         req.flash("mensajes", [{msg: "Error al mostrar la imagen"}])
         res.redirect('datosPerfil')
-    }*/
+    }
     res.render('datosPerfil')
 }
 
@@ -78,13 +78,25 @@ const subirFoto =  async(req, res)=>{
     })
 }
 
-
-
-
+/*const formEditar = async(req, res)=>{
+    try{
+        const user = await User.findById(req.user.id)
+        console.log(user)
+        res.redirect('/datosPerfil/editarFoto', {user: req.user, imagen: user.imagen})
+        
+    }
+    catch(error){
+        req.flash("mensajes", [{msg: "Error al mostrar la imagen"}])
+        res.redirect('datosPerfil')
+    }
+    res.render('editarFoto')
+}
+*/
 
 
 module.exports = {
     formPerfil,
-    subirFoto
+    subirFoto,
+    //formEditar
 }
 

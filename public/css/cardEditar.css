@@ -1,15 +1,4 @@
-    <!--<article class="card mb-2">
-        <div class="card-body">
-            <p>{{this.nombre}}</p>
-            <p>{{this.apellido}}</p>
-            <a href="eliminar/{{this._id}}" class="btn btn-danger">Eliminar</a>
-            <a href="editar/{{this._id}}" class="btn btn-warning">Editar</a>
-            <button data-short="{{this.email}}" href="#" class="btn btn-info">Copiar</button>
-        </div>
-    </article>-->
-
-<style>
-        *{
+*{
     box-sizing: border-box;
     margin: 0%;
     padding: 0%;
@@ -368,31 +357,3 @@ a:hover{
         font-size: 3.5vh;
     }
 }
-
-    </style>
-    <header><a href="/datosPersonales/verMisDatos">⤺Volver</a></header>
-    <title>Editar mis datos personales</title>
-    {{>alertas}}
-    <div class="datosCuenta"> 
-                <form action="" method="post">
-                    <input type="hidden" name="_csrf" value="{{csrfToken}}"/>
-                    <h1>Editar mis datos personales</h1>
-                    <div>
-                        <h3>Datos Personales</h3>
-                        <label>Nombre</label>
-                        <input type="text" name="nombre" value={{this.nombre}}>
-                        <label>Apellido</label>
-                        <input type="text" class="apellido" name="apellido" value={{this.apellido}}>
-                        <label>Teléfono</label>
-                        <input type="text" name="telefono" value={{this.telefono}}>
-                        <label>Código Pos</label>
-                        <input type="text" name="cp" value={{this.cp}}>
-                        <label>Dirección(calle)</label>
-                        <input type="text" name="calle" value={{this.calle}}>
-                        <label>Altura</label>
-                        <input type="text" name="altura" value={{this.altura}}>
-                        <span>-</span>
-                        <button class="guardar" type="submit">Guardar</button>
-                    </div>
-                </form>
-        </div>

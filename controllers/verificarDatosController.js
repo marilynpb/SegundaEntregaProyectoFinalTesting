@@ -3,7 +3,7 @@ const PersonalData = require("../models/PersonalData")
 const verificarDatos = async(req, res)=>{
     try{
         const personaldatas = await PersonalData.find({user: req.user.id}).lean()
-        if(!personaldatas.nombre){
+        if(personaldatas.length == 0){
             res.redirect('/datosPersonales/datosPersonales')
         }
         else{

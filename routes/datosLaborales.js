@@ -1,5 +1,5 @@
 const express = require('express');
-const { agregarDatos } = require('../controllers/datosLaboralesController');
+const { agregarDatos} = require('../controllers/datosLaboralesController');
 const verificarUser = require('../middlewares/verificarUser')
 
 const router = express.Router();

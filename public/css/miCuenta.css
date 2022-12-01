@@ -6,7 +6,6 @@
 
 body{
     width: 100%;
-    height:200vh;
     background-color: white;
     font-family: 'Raleway', sans-serif; 
 }
@@ -76,36 +75,34 @@ html{
 
 /*------------- Datos de la Cuenta ---------------------*/
 
+.fotoPerfil{
+    border: 2px solid rgb(94, 91, 91);
+    margin-bottom: 5vh;
+}
+
+.email{
+    clear: both;
+    margin-top: 5vh;
+}
+
 .datosCuenta{
     width: 85%;
-    height: auto;
     float: right;
     text-align: center;
 }
 
 .datosCuenta div{
-    background-color: white;
-    box-shadow: 3px 3px rgba(60, 58, 58, 0.21), 0.2em 0 1em rgb(36, 36, 35);
     padding: 6vh;
-    margin: 5vh;
-}
+    padding-bottom: 0;
 
-.divCuenta{
-    height:50vh;
-}
-
-.divContraseña{
-    height:80vh;
 }
 
 .divDatos{
-    height: 140vh;
     text-align: end;
 }
 
 .divDatos div, .divContraseña div, .divCuenta div{
     width: 100%;
-    height: 90%;
     border: none;
     box-shadow: none;
     margin-top: 0%;
@@ -114,23 +111,66 @@ html{
     margin-right: auto;
 }
 
+.divFormacion{
+    text-align: end;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: start;
+    padding: 6vh;
+}
+
+.divFormacion div{
+    width: 100%;
+    margin: 0%;
+    box-shadow: none;
+    text-align: start;
+    padding: 6vh;
+}
+
+.divFormacion div{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    padding-bottom: 50vh;
+    text-align: start;
+}
+
+.divFormacion div div input{
+    width:100%;
+    margin-right: 3vh;
+}
+
+.divFormacion h3{
+    text-align: start;
+    margin: 0%;
+    clear: both;
+    width: 100%;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+
 
 .datosCuenta div h3{
     margin-bottom: 5vh;
     color:rgb(85, 81, 81);
     text-align: start;
+    width: 100%;
+    border-bottom: 2px solid rgb(21, 21, 21);
+    padding-top: 5vh;
 }
 
 form{
     width: auto;
     min-width: 20vh;
-    height: auto;
+    padding-top: 8vh;
     padding-bottom: 15vh;
+    margin-bottom: 5vh;
     margin-left: 10%;
     margin-right: 10%;
     margin-top: 0%;
     font-size: 3vh;
     color: #4A69DC; 
+    box-shadow: 1px 1px rgba(124, 122, 122, 0.363), 0.5em 0 1em black;
 }
 
 input{
@@ -144,6 +184,20 @@ input{
     font-size: 3vh;
     float: left;
     margin-right: 3vh;
+}
+
+.perfilTextarea{
+    float: left;
+    min-height: 20vh;
+    width: 80%;
+    max-width: 80%;
+    height: auto;
+    font-size: 3vh;
+    margin-left: 12vh;
+    margin-bottom: 10vh;
+    margin-right: 20vh;
+    background-color: #ede8e8;
+    font-family: 'Raleway', sans-serif; 
 }
 
 form label{
@@ -169,8 +223,10 @@ form h1{
 form h2{
     padding-top: 0;
     text-align: center;
-    margin-bottom: 5vh;
-    color: rgb(0, 76, 255);
+    margin-bottom: 10vh;
+    color:rgb(85, 81, 81);
+    width: 100%;
+    border-bottom: 2px solid rgb(21, 21, 21);
 }
 
 span{
@@ -187,7 +243,8 @@ span{
     border-radius: 50px;
     color: white;
     font-size: 3vh;
-    margin-top: 8vh;
+    margin-top: 0;
+    margin-bottom: 5vh;
     margin-left: 15%;
     margin-right: 10%;
     padding-left: 2vh;
@@ -213,7 +270,7 @@ a:hover{
     height: 3.5vh;
     background-color: transparent;
     float: right;
-    margin-top: -8vh;
+    margin-top: 0vh;
     border: none;
     border-radius: 10px;
 }
@@ -225,6 +282,13 @@ a:hover{
 
 .editar:hover{
     background-color: #9b969f8a;
+}
+
+div div .subtitulos{
+    border-bottom: none;
+    text-decoration: underline;
+    color: #18102C;
+    padding-top: 5vh;
 }
 
 

@@ -133,8 +133,42 @@ const cerrarSesion = (req, res)=>{
             return next(err)
         }
         res.redirect('/auth/login')
+        req.flash("mensajes", [{msg: "Sesión cerrada"}])
     })
 }
+
+//Elimina cuenta segun el ID
+const eliminarCuenta = async(req, res)=>{
+
+    try{
+        const user = await User.find({user: req.user.id})
+        console.log(user)
+
+        if(!user.user.equals(req.user.id)){
+            throw new Error("No posee permiso para eliminar los datos")
+        }
+        await user.remove()
+        req.flash("mensajes", [{msg: "Datos eliminados correctamente"}])
+
+        res.redirect('/')
+    }
+    catch(error){
+        req.flash("mensajes", [{msg: error.message}])
+        return res.redirect('verMisDatos/verMisDatos')
+    }
+    
+}
+/*
+const mostrarDatosUser = async(req, res)=>{
+    try{
+        const user = await User.find({user: req.user.id}).lean()
+        res.render('verMisDatos', {user:user})
+    }
+    catch(error){
+        req.flash("mensajes", [{msg: error.message}])
+        res.redirect('/verMisDatos/verMisDatos')
+    }
+}*/
 
 
 
@@ -144,5 +178,6 @@ module.exports = {
     confirmarCuenta,
     loginForm,
     loginUser,
-    cerrarSesion
+    cerrarSesion,
+    eliminarCuenta
 }

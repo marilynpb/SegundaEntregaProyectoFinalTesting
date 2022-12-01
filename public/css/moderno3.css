@@ -10,12 +10,13 @@ body{
 
 main{
     width: 70%;
+    min-width: 900px;
     max-width: 1200px;
-    height: 190vh;
+    height: 215vh;
+    min-height: 215vh;
     margin-top: 5vh;
     margin-left: auto;
     margin-right: auto;
-    padding-bottom: 10vh;
 }
 
 .container{

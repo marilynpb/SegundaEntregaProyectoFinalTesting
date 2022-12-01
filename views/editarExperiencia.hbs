@@ -179,6 +179,13 @@ a:hover{
     background-color: #9b969f8a;
 }
 
+.perfilTextarea{
+    clear: both;
+    width: 80%;
+    min-height: 20vh;
+    margin-bottom: 8vh;
+    background-color: #ede8e8;
+}
 
 /*-------------- MediaQuerys -----------*/
 @media (max-width:1630px){
@@ -369,30 +376,59 @@ a:hover{
     }
 }
 
-    </style>
+</style>
+
     <header><a href="/datosPersonales/verMisDatos">⤺Volver</a></header>
-    <title>Editar mis datos personales</title>
+    <title>Editar mis Experiencias</title>
     {{>alertas}}
     <div class="datosCuenta"> 
                 <form action="" method="post">
                     <input type="hidden" name="_csrf" value="{{csrfToken}}"/>
-                    <h1>Editar mis datos personales</h1>
+                    <h3>Editar mis Experiencias</h3>
                     <div>
-                        <h3>Datos Personales</h3>
-                        <label>Nombre</label>
-                        <input type="text" name="nombre" value={{this.nombre}}>
-                        <label>Apellido</label>
-                        <input type="text" class="apellido" name="apellido" value={{this.apellido}}>
-                        <label>Teléfono</label>
-                        <input type="text" name="telefono" value={{this.telefono}}>
-                        <label>Código Pos</label>
-                        <input type="text" name="cp" value={{this.cp}}>
-                        <label>Dirección(calle)</label>
-                        <input type="text" name="calle" value={{this.calle}}>
-                        <label>Altura</label>
-                        <input type="text" name="altura" value={{this.altura}}>
-                        <span>-</span>
-                        <button class="guardar" type="submit">Guardar</button>
+                    <h3 class="subtitulos">Experiencia n°1</h3><span>-</span>
+                    <label>Puesto</label><span>-</span>
+                    <input type="text" name="puesto" value={{this.puesto}}>
+                    <label>Empresa</label><span>-</span>
+                    <input type="text" name="empresa" value={{this.empresa}}>
+                    <label>Desde(año)*</label>
+                    <input type="text" name="desde" placeholder="aaaa" class="selectLarge" id="desde1">
+                    <span>-</span>
+                    <label>Hasta(año)*</label>
+                    <input type="text" name="hasta" placeholder="aaaa" class="selectLarge" id="hasta1">
+                    <span>-</span>
+                    <label>Descripción del puesto</label><span>-</span>
+                    <textarea  type="text" name="descripcion" disabled class="perfilTextarea">{{this.descripcion}}</textarea>
+
+                    <h3 class="subtitulos">Experiencia n°2</h3><span>-</span>
+                    <label>Puesto</label><span>-</span>
+                    <input type="text" name="puesto2" value={{this.puesto2}}>
+                    <label>Empresa</label><span>-</span>
+                    <input type="text" name="empresa2" value={{this.empresa2}}>
+                    <label>Desde(año)*</label>
+                    <input type="text" name="desde2" placeholder="aaaa" class="selectLarge" id="desde2">
+                    <span>-</span>
+                    <label>Hasta(año)*</label>
+                    <input type="text" name="hasta2" placeholder="aaaa" class="selectLarge" id="hasta2">
+                    <span>-</span>
+                    <label>Descripción del puesto</label><span>-</span>
+                    <textarea  type="text" name="descripcion2" class="perfilTextarea">{{this.descripcion2}}</textarea>
+
+                    <h3 class="subtitulos">Experiencia n°3</h3><span>-</span>
+                    <label>Puesto</label><span>-</span>
+                    <input type="text" name="puesto3" value={{this.puesto2}}>
+                    <label>Empresa</label><span>-</span>
+                    <input type="text" name="empresa3" value={{this.empresa2}}>
+                    <label>Desde(año)*</label>
+                    <input type="text" name="desde3" placeholder="aaaa" class="selectLarge" id="desde3">
+                    <span>-</span>
+                    <label>Hasta(año)*</label>
+                    <input type="text" name="hasta3" placeholder="aaaa" class="selectLarge" id="hasta3">
+                    <span>-</span>
+                    <label>Descripción del puesto</label><span>-</span>
+                    <textarea  type="text" name="descripcion3" class="perfilTextarea">{{this.descripcion3}}</textarea>
+                    <span>-</span>
+                    <button class="guardar" type="submit">Guardar</button>
                     </div>
                 </form>
         </div>

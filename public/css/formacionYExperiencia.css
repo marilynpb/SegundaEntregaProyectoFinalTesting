@@ -142,10 +142,15 @@ form{
 }
 
 .formDer{
-    width: 50%;
+    width: 40%;
     height:auto;
     float: right;
     text-align: start;
+    margin-left: 5vh;
+}
+
+select{
+    height: 30vh;
 }
 
 input{
@@ -326,6 +331,11 @@ a:hover{
     background-color: #ede8e8;
     padding: 3vh;
     border-radius: 0 0 10px 10px;
+}
+
+.idiomasNuevo{
+    margin-top: 5vh;
+    background-color: #ede8e8;
 }
 
 .agregado{

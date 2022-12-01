@@ -10,6 +10,7 @@ router.get('/verMisDatos', verificarUser, (req, res)=>{
     res.render('verMisDatos')
 })
 
+
 //router.get('/verMisDatos/:id', verificarUser, leerDatos)
 
 

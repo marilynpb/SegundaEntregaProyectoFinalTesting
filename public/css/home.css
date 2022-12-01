@@ -92,6 +92,7 @@ header a:hover{
 .contenedorTextoPortada{
     width: 90%;
     height: 80vh;
+    margin-top: 0%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -105,14 +106,14 @@ header a:hover{
     background-repeat: no-repeat;
     background-size: 100% 110%; 
     filter: brightness(90%);
-    margin-top: 10vh;
+    margin-top: -5vh;
     margin-right:3vh;
 }
 
 .descripcion{
     width: 35%;
     height: 80vh;
-    padding: 23vh 0 7vh 0;
+    padding: 2vh 0 7vh 0;
     float: left;
     text-align: center;
     margin-right: 0%;

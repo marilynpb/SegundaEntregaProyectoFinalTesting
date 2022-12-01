@@ -97,7 +97,8 @@ a{
 /*---------------Formulario---------------------*/
 
 main{
-    padding-top: 20vh;
+    padding-top: 5vh;
+    padding-bottom: 2vh;
 }
 
 .container{
