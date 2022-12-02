@@ -52,6 +52,7 @@ img{
     width: 100%;
     border-radius: 50%;
     margin-bottom: 3vh;
+    background-color: rgb(158, 153, 153);
 }
 
 .apellido{

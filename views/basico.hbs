@@ -1,135 +1,164 @@
 <link rel="stylesheet" href="../css/basico.css">
+<title>Diseño Basico</title>
 <main>
     <div class="container">
+        <form action="" method="get">
+            <div class="bordeColorTop"></div>
 
-        <div class="bordeColorTop"></div>
             <h1 class="titulo">*Nombre y Apellido*</h1>
             <hr>
-        <div class="izquierda">
-            <img src="../img/perfiles/637fb1a9bb8f1dc74813238a.jpeg">
-            <h2>Datos personales</h2>
-            <hr>
-            <h3 class="tituloIzq">Nombre</h3>
-            <h3 class="datos">*Nombre y Apellido*</h3>
-            <br>
-            <h3 class="tituloIzq">Correo electrónico</h3>
-            <h3 class="datos">*Email*</h3>
-            <br>
-            <h3 class="tituloIzq">Teléfono</h3>
-            <h3 class="datos">*Telefono*</h3>
-            <br>
-            <h3 class="tituloIzq">Dirección</h3>
-            <h3 class="datos">*Calle altura*</h3>
-        </div>
+            <div class="izquierda">
+                {{#each user}}
+                    <img src="../img/perfiles/{{this.imagen}}">
+                    <h2>Datos personales</h2>
+                    <hr>
+                {{/each}}
 
-        <div class="derecha">
-            <h2>Perfíl</h2>
-            <hr>
-            <p>
-                *Descripcion perfil*
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis eum autem velit pariatur? Velit dolor excepturi eveniet accusamus deleniti tenetur quisquam alias repudiandae. Laudantium eaque placeat dolorem dignissimos, quo voluptas!
-            </p>
+                {{#each personal}}
+                    <h3 class="tituloIzq">Nombre</h3>
+                    <h3 class="datos" name="nombre">{{this.nombre}} {{this.apellido}}</h3>
+                    <br>
+                {{/each}}
 
+                {{#each user}}
+                    <h3 class="tituloIzq">Correo electrónico</h3>
+                    <h3 class="datos">{{this.email}}</h3>
+                {{/each}}
 
-            <h2 class="margen">Experiencia</h2>
-            <hr>
-            <table>
-                <tr>
-                    <th><h3 class="black">*Puesto*</h3></th>
-                    <th rowspan="2" class="alineacionFin"><h3>*00/00/2000</h3></th>
-                </tr>
-                <tr>
-                    <td><h3>*Empresa*</h3></td>
-                </tr>
-                <tr>
-                    <td><p>*Descricion tareas realizadas* Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis alias deleniti, ex dolorum quas veniam eveniet et delectus soluta similique facere ab, necessitatibus, id ullam quasi. Quaerat aliquam temporibus odio!</p></th>
-                </tr>
-            </table>
+                {{#each personal}}
+                    <br>
+                    <h3 class="tituloIzq">Teléfono</h3>
+                    <h3 class="datos" name="telefono">{{this.telefono}}</h3>
+                    <br>
+                    <h3 class="tituloIzq">Dirección</h3>
+                    <h3 class="datos">{{this.calle}} {{this.altura}}, {{this.pais}}</h3>
+                {{/each}}
+            </div>
 
-            <table>
-                <tr>
-                    <th><h3 class="black">*Puesto*</h3></th>
-                    <th rowspan="2" class="alineacionFin"><h3>*00/00/2000</h3></th>
-                </tr>
-                <tr>
-                    <td><h3>*Empresa*</h3></td>
-                </tr>
-                <tr>
-                    <td><p>*Descricion tareas realizadas* Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore cumque nobis eligendi magni amet nam, omnis distinctio asperiores laudantium ut id ab itaque rerum, ducimus doloremque aut pariatur recusandae eaque.</p></th>
-                </tr>
-            </table>
+            <div class="derecha">
+                <h2>Perfíl</h2>
+                <hr>
+                {{#each descripcionData}}
+                    <p name="descripcionPerfil">{{this.descripcionPerfil}}</p>
+                {{/each}}
 
-            <table>
-                <tr>
-                    <th><h3 class="black">*Puesto*</h3></th>
-                    <th rowspan="2" class="alineacionFin"><h3>*00/00/2000</h3></th>
-                </tr>
-                <tr>
-                    <td><h3>*Empresa*</h3></td>
-                </tr>
-                <tr>
-                    <td><p>*Descricion tareas realizadas* Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium consequuntur dignissimos similique officia, cum impedit beatae voluptas asperiores explicabo quos praesentium sit incidunt voluptatum. Quia labore odit excepturi quibusdam beatae.</p></th>
-                </tr>
-            </table>
+                <h2 class="margen">Experiencia</h2>
+                {{#each laboralData}}
+                    <hr>
+                    <table>
+                        <tr>
+                            <th>
+                                <h3 class="black">{{this.puesto}}</h3>
+                            </th>
+                            <th rowspan="2" class="alineacionFin">
+                                <h3>{{this.desde}} - {{this.hasta}}</h3>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td><h3>{{this.empresa}}</h3></td>
+                        </tr>
+                        <tr>
+                            <td><p>{{this.descripcion}}</p></th>
+                        </tr>
+                    </table>
 
-            <h2 class="margen">Formación</h2>
-            <hr>
-            <table>
-                <tr>
-                    <th><h3 class="black">*Carrera*</h3></th>
-                    <th rowspan="2" class="alineacionFin"><h3>*Año egreso: 2000</h3></th>
-                </tr>
-                <tr>
-                    <td><h3>*Universidad*</h3></td>
-                </tr>
-            </table>
+                    <table>
+                        <tr>
+                            <th>
+                                <h3 class="black">{{this.puesto2}}</h3>
+                            </th>
+                            <th rowspan="2" class="alineacionFin">
+                                <h3>{{this.desde2}} - {{this.hasta2}}</h3>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td><h3>{{this.empresa2}}</h3></td>
+                        </tr>
+                        <tr>
+                        <td><p>{{this.descripcion2}}</p></td>
+                        </tr>
+                    </table>
 
-            <table>
-                <tr>
-                    <th><h3 class="black">*Carrera*</h3></th>
-                    <th rowspan="2" class="alineacionFin"><h3>*Año egreso: 2000</h3></th>
-                </tr>
-                <tr>
-                    <td><h3>*Universidad*</h3></td>
-                </tr>
-            </table>
+                    <table>
+                        <tr>
+                            <th><h3 class="black">{{this.puesto3}}</h3></th>
+                            <th rowspan="2" class="alineacionFin">
+                                <h3>{{this.desde3}} - {{this.hasta3}}</h3>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td><h3>{{this.empresa3}}</h3></td>
+                        </tr>
+                        <tr>
+                            <td><p>{{this.descripcion3}}</p></th>
+                        </tr>
+                    </table>
 
-            <table>
-                <tr>
-                    <th><h3 class="black">*Carrera*</h3></th>
-                    <th rowspan="2" class="alineacionFin"><h3>*Año egreso: 2000</h3></th>
-                </tr>
-                <tr>
-                    <td><h3>*Universidad*</h3></td>
-                </tr>
-            </table>
+                    <h2 class="margen">Formación</h2>
+                    <hr>
+                    <table>
+                        <tr>
+                            <th><h3 class="black">{{this.carrera}}</h3></th>
+                            <th rowspan="2" class="alineacionFin">
+                                <h3>Año egreso: {{this.finalizado}}</h3>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td><h3>{{this.instituto}}</h3></td>
+                        </tr>
+                    </table>
 
-            <h2 class="margen">Idiomas</h2>
-            <hr>
-            <table>
-                <tr>
-                    <th><p>*Idioma*</p></th>
-                    <th class="alineacionFin"><p>*Nivel*</p></th>
-                </tr>
-            </table>
+                    <table>
+                        <tr>
+                            <th><h3 class="black">{{this.carrera2}}</h3></th>
+                            <th rowspan="2" class="alineacionFin">
+                                <h3>*Año egreso: {{this.finalizado2}}</h3>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td><h3>{{this.instituto2}}</h3></td>
+                        </tr>
+                    </table>
 
-            <table>
-                <tr>
-                    <th><p>*Idioma*</p></th>
-                    <th class="alineacionFin"><p>*Nivel*</p></th>
-                </tr>
-            </table>
+                    <table>
+                        <tr>
+                            <th><h3 class="black">{{this.carrera3}}</h3></th>
+                            <th rowspan="2" class="alineacionFin">
+                                <h3>*Año egreso: {{this.finalizado3}}</h3>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td><h3>{{this.instituto3}}</h3></td>
+                        </tr>
+                    </table>
 
-            <table>
-                <tr>
-                    <th><p>*Idioma*</p></th>
-                    <th class="alineacionFin"><p>*Nivel*</p></th>
-                </tr>
-            </table> 
-        </div>
+                    <h2 class="margen">Idiomas</h2>
+                    <hr>
+                    <table>
+                        <tr>
+                            <th><p>{{this.idioma}}</p></th>
+                            <th class="alineacionFin"><p>{{this.nivel}}</p></th>
+                        </tr>
+                    </table>
+
+                    <table>
+                        <tr>
+                            <th><p>{{this.idioma2}}</p></th>
+                            <th class="alineacionFin"><p>{{this.nivel2}}</p></th>
+                        </tr>
+                    </table>
+
+                    <table>
+                        <tr>
+                            <th><p>{{this.idioma3}}</p></th>
+                            <th class="alineacionFin"><p>{{this.nivel3}}</p></th>
+                        </tr>
+                    </table> 
+                {{/each}}
+            </div>
         <div class="bordeColorBottom"></div>
+        </form>
     </div>
-
 </main>
 
 

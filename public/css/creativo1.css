@@ -73,6 +73,7 @@ main{
 .header img{
     width: 66%;
     height: 80%;
+    background-color: rgb(158, 153, 153);
 }
 
 .bordeColorTop, .bordeColorBottom{

@@ -51,6 +51,7 @@ main{
     margin-top: 5vh;
     margin-bottom: 2vh;
     width: 80%;
+    background-color: rgb(235, 230, 230);
 }
 
 .izquierda h2{

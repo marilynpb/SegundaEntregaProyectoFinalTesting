@@ -49,6 +49,7 @@ main{
 .perfilImg{
     margin-bottom: 2vh;
     width:100%;
+    background-color: rgb(158, 153, 153);
 }
 
 .izquierda h2{

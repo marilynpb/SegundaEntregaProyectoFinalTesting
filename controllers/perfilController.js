@@ -58,7 +58,7 @@ const subirFoto =  async(req, res)=>{
 
             const image = await Jimp.read(dirFile)
 
-            image.resize(200, 200).quality(90).writeAsync(dirFile)
+            image.resize(200, 200).quality(100).writeAsync(dirFile)
 
             const user = await User.findById(req.user.id)
 

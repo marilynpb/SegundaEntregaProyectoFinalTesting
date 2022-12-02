@@ -93,6 +93,7 @@ p{
 
 .izquierda img{ 
     width: 100%;
+    background-color: rgb(158, 153, 153);
 }
 
 .izquierda h2{

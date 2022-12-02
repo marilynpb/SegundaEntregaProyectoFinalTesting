@@ -134,6 +134,7 @@ table img{
     margin-bottom: 0%;
     position: absolute;
     border-radius: 50%;
+    background-color: rgb(243, 239, 239);
 }
 
 .tableContacto th{
