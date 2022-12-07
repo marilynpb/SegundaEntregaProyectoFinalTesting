@@ -5,8 +5,36 @@
 }
 
 body{
-    background-color: rgb(214, 208, 208);
-    height: 2300px;
+    background: linear-gradient(90deg, rgba(26,18,30,1) 0%, rgba(121,17,173,1) 34%, rgba(84,20,180,1) 56%, rgba(72,14,161,1) 76%, rgba(32,14,62,1) 95%, rgba(26,17,35,1) 100%);
+    height: 1900px;
+}
+
+header{
+    display: flex;
+    margin-top: 3vh;
+    justify-content:space-around;
+}
+
+.otro{
+    font-size: 3vh;
+    color: white;
+    font-weight: bolder;
+    text-decoration: none;
+    width: auto;
+    text-align: center;
+    background-color: #18102C;    
+    border: none;
+    border-radius: 25px;
+    color: white;
+    padding: 1vh;
+    padding-left: 2vh;
+    padding-right: 2vh;
+    margin: 0%;
+    box-shadow: #b8b6ba 1px 2px 6px, #bab8bd 1px 2px 4px, #b1aeb3 1px 2px 6px;
+}
+
+.otro:hover{
+    box-shadow: #bab8bd 1px 4px 10px, #bab8bd 1px 4px 20px, #bab8bd 1px 4px 10px;
 }
 
 main{

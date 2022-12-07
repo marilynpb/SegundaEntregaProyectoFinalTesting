@@ -24,8 +24,7 @@
                         <h3>Cuenta</h3>
                         <div>
                             {{#each user}}
-                                <a href="editarFoto/{{this._id}}" class="editar"><img src="../img/Iconos/pencil-square.svg"></a>
-
+                                <a href="editarFotoPerfil/{{this._id}}" class="editar"><img src="../img/Iconos/pencil-square.svg"></a>
                                 <form action="datosPerfil?_csrf={{csrfToken}}" method="post" enctype="multipart/form-data">
                                     <img src="../img/perfiles/{{this.imagen}}" alt="" class="fotoPerfil">
                                     <span>-</span>
@@ -35,7 +34,7 @@
                                 <input type="text" class="correElectronico"  disabled value={{this.email}}>
                             {{/each}}
                             <span>-</span>
-                            <p><a href="eliminar/{{this._id}}">Eliminar cuenta</a></p>
+                            <p><a href="eliminarCuenta">Eliminar cuenta</a></p>
                         </div>
                     </div>  
 

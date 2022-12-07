@@ -15,7 +15,7 @@ const subirDescripcion = async(req, res)=>{
 
         await descripcionData.save()
         req.flash("mensajes", [{msg: "Datos agregados correctamente"}])
-        res.redirect('/elegirPlantilla/elegirPlantilla')
+        res.redirect('/elegirPlantilla/soloElegirPlantilla')
     }
     catch(error){
         req.flash("mensajes", [{msg: error.message}])

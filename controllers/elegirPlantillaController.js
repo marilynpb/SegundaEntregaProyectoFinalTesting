@@ -4,6 +4,7 @@ const PersonalData = require('../models/PersonalData')
 const Plantilla = require('../models/Plantilla')
 const User = require('../models/User')
 
+//Guarda la plantilla seleccionada
 const agregarPlantilla = async(req, res)=>{
     const {elegirPlantilla} = req.body
 
@@ -20,11 +21,6 @@ const agregarPlantilla = async(req, res)=>{
         await miPlantilla.save()
         req.flash("mensajes", [{msg: "Se guardó la plantilla"}])
 
-        const descripcionData = await DescripcionData.find({user: req.user.id}).lean()
-        const personal = await PersonalData.find({user: req.user.id}).lean() 
-        const laboralData = await LaboralData.find({user: req.user.id}).lean()
-        const user = await User.find(req.user.id)
-
         let basico = "basico"
         let creativo1 = "creativo1"
         let creativo2 = "creativo2"
@@ -35,42 +31,41 @@ const agregarPlantilla = async(req, res)=>{
         let funcional = "funcional"
         let mixto = "mixto"
 
-
         switch (miPlantilla.elegirPlantilla) {
             case basico:
-                res.render('basico', {personal : personal, laboralData: laboralData, user: user, descripcionData: descripcionData})
+                res.redirect('basico')
             break;
 
             case creativo1:
-                res.render('creativo1', {personal : personal, laboralData: laboralData, user: user, descripcionData: descripcionData})
+                res.redirect('creativo1')
             break;
 
             case creativo2:
-                res.render('creativo2', {personal : personal, laboralData: laboralData, user: user, descripcionData: descripcionData})
+                res.redirect('creativo2')
             break;
 
             case moderno1:
-                res.render('moderno1', {personal : personal, laboralData: laboralData, user: user, descripcionData: descripcionData})
+                res.redirect('moderno1')
             break;
 
             case cronologico:
-                res.render('cronologico', {personal : personal, laboralData: laboralData, user: user, descripcionData: descripcionData})
+                res.redirect('cronologico')
             break;
 
             case funcional:
-                res.render('funcional', {personal : personal, laboralData: laboralData, user: user, descripcionData: descripcionData})
+                res.redirect('funcional')
             break;
 
             case mixto:
-                res.render('mixto', {personal : personal, laboralData: laboralData, user: user, descripcionData: descripcionData})
+                res.redirect('mixto')
             break;
 
             case moderno2:
-                res.render('moderno2', {personal : personal, laboralData: laboralData, user: user, descripcionData: descripcionData})
+                res.redirect('moderno2')
             break;
 
             case moderno3:
-                res.render('moderno3', {personal : personal, laboralData: laboralData, user: user, descripcionData: descripcionData})
+                res.redirect('moderno3')
             break;
         
             default:
@@ -85,7 +80,152 @@ const agregarPlantilla = async(req, res)=>{
     }
 }
 
+/*---------Completa el modelo elegido con los datos del usuario-----*/
+const leerDatosBasico = async(req, res)=>{
+    try{
+        const descripcionData = await DescripcionData.find({user: req.user.id}).lean()
+        const personal = await PersonalData.find({user: req.user.id}).lean() 
+        const laboralData = await LaboralData.find({user: req.user.id}).lean()
+        const user = await User.find(req.user.id)
+
+        res.render('basico',  {personal : personal, laboralData: laboralData, user: user, descripcionData: descripcionData})
+    }
+    catch(error){
+        req.flash("mensajes", [{msg: error.message}])
+        return res.redirect('/elegirPlantilla/soloElegirPlantilla')
+    }
+}
+
+const leerDatosCreativo1 = async(req, res)=>{
+    try{
+        const descripcionData = await DescripcionData.find({user: req.user.id}).lean()
+        const personal = await PersonalData.find({user: req.user.id}).lean() 
+        const laboralData = await LaboralData.find({user: req.user.id}).lean()
+        const user = await User.find(req.user.id)
+
+        res.render('creativo1',  {personal : personal, laboralData: laboralData, user: user, descripcionData: descripcionData})
+    }
+    catch(error){
+        req.flash("mensajes", [{msg: error.message}])
+        return res.redirect('/elegirPlantilla/soloElegirPlantilla')
+    }
+}
+
+const leerDatosModerno1 = async(req, res)=>{
+    try{
+        const descripcionData = await DescripcionData.find({user: req.user.id}).lean()
+        const personal = await PersonalData.find({user: req.user.id}).lean() 
+        const laboralData = await LaboralData.find({user: req.user.id}).lean()
+        const user = await User.find(req.user.id)
+
+        res.render('moderno1',  {personal : personal, laboralData: laboralData, user: user, descripcionData: descripcionData})
+    }
+    catch(error){
+        req.flash("mensajes", [{msg: error.message}])
+        return res.redirect('/elegirPlantilla/soloElegirPlantilla')
+    }
+}
+
+const leerDatosCronologico = async(req, res)=>{
+    try{
+        const descripcionData = await DescripcionData.find({user: req.user.id}).lean()
+        const personal = await PersonalData.find({user: req.user.id}).lean() 
+        const laboralData = await LaboralData.find({user: req.user.id}).lean()
+        const user = await User.find(req.user.id)
+
+        res.render('cronologico',  {personal : personal, laboralData: laboralData, user: user, descripcionData: descripcionData})
+    }
+    catch(error){
+        req.flash("mensajes", [{msg: error.message}])
+        return res.redirect('/elegirPlantilla/soloElegirPlantilla')
+    }
+}
+
+const leerDatosFuncional = async(req, res)=>{
+    try{
+        const descripcionData = await DescripcionData.find({user: req.user.id}).lean()
+        const personal = await PersonalData.find({user: req.user.id}).lean() 
+        const laboralData = await LaboralData.find({user: req.user.id}).lean()
+        const user = await User.find(req.user.id)
+
+        res.render('funcional',  {personal : personal, laboralData: laboralData, user: user, descripcionData: descripcionData})
+    }
+    catch(error){
+        req.flash("mensajes", [{msg: error.message}])
+        return res.redirect('/elegirPlantilla/soloElegirPlantilla')
+    }
+}
+
+const leerDatosMixto = async(req, res)=>{
+    try{
+        const descripcionData = await DescripcionData.find({user: req.user.id}).lean()
+        const personal = await PersonalData.find({user: req.user.id}).lean() 
+        const laboralData = await LaboralData.find({user: req.user.id}).lean()
+        const user = await User.find(req.user.id)
+
+        res.render('mixto',  {personal : personal, laboralData: laboralData, user: user, descripcionData: descripcionData})
+    }
+    catch(error){
+        req.flash("mensajes", [{msg: error.message}])
+        return res.redirect('/elegirPlantilla/soloElegirPlantilla')
+    }
+}
+
+const leerDatosModerno2 = async(req, res)=>{
+    try{
+        const descripcionData = await DescripcionData.find({user: req.user.id}).lean()
+        const personal = await PersonalData.find({user: req.user.id}).lean() 
+        const laboralData = await LaboralData.find({user: req.user.id}).lean()
+        const user = await User.find(req.user.id)
+
+        res.render('moderno2',  {personal : personal, laboralData: laboralData, user: user, descripcionData: descripcionData})
+    }
+    catch(error){
+        req.flash("mensajes", [{msg: error.message}])
+        return res.redirect('/elegirPlantilla/soloElegirPlantilla')
+    }
+}
+
+const leerDatosCreativo2 = async(req, res)=>{
+    try{
+        const descripcionData = await DescripcionData.find({user: req.user.id}).lean()
+        const personal = await PersonalData.find({user: req.user.id}).lean() 
+        const laboralData = await LaboralData.find({user: req.user.id}).lean()
+        const user = await User.find(req.user.id)
+
+        res.render('creativo2',  {personal : personal, laboralData: laboralData, user: user, descripcionData: descripcionData})
+    }
+    catch(error){
+        req.flash("mensajes", [{msg: error.message}])
+        return res.redirect('/elegirPlantilla/soloElegirPlantilla')
+    }
+}
+
+const leerDatosModerno3 = async(req, res)=>{
+    try{
+        const descripcionData = await DescripcionData.find({user: req.user.id}).lean()
+        const personal = await PersonalData.find({user: req.user.id}).lean() 
+        const laboralData = await LaboralData.find({user: req.user.id}).lean()
+        const user = await User.find(req.user.id)
+
+        res.render('moderno3',  {personal : personal, laboralData: laboralData, user: user, descripcionData: descripcionData})
+    }
+    catch(error){
+        req.flash("mensajes", [{msg: error.message}])
+        return res.redirect('/elegirPlantilla/soloElegirPlantilla')
+    }
+}
+
 
 module.exports = {
     agregarPlantilla,
+    leerDatosBasico,
+    leerDatosCreativo1,
+    leerDatosModerno1,
+    leerDatosCronologico,
+    leerDatosFuncional,
+    leerDatosMixto,
+    leerDatosModerno2,
+    leerDatosCreativo2,
+    leerDatosModerno3
 }

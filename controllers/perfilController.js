@@ -4,7 +4,7 @@ const path = require('path')
 const Jimp = require('jimp')
 const User = require('../models/User')
 
-
+//Formulario de Perfíl
 const formPerfil = async(req, res)=>{
     try{
         const user = await User.findById(req.user.id)
@@ -17,8 +17,8 @@ const formPerfil = async(req, res)=>{
     res.render('datosPerfil')
 }
 
+//Guarda la foto subida
 const subirFoto =  async(req, res)=>{
-    
     /*const descripcion = req.body*/
     const form = new formidable.IncomingForm()
     form.maxFileSize = 50 * 1024 * 1024//50mb

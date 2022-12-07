@@ -8,7 +8,9 @@ const {
     confirmarCuenta, 
     loginUser, 
     cerrarSesion,
-    eliminarCuenta
+    eliminarCuenta,
+    enviarResetPass,
+    guardarNuevaPass
 } = require('../controllers/authController');
 const verificarUser = require('../middlewares/verificarUser');
 
@@ -37,6 +39,7 @@ router.post('/register', [
 ], registerUser)
 
 router.get('/confirmar/:token', confirmarCuenta)
+
 router.get('/login', loginForm)
 
 router.post('/login',[
@@ -51,8 +54,38 @@ router.post('/login',[
         .escape()
 ] ,loginUser)
 
-
 router.get('/loguot', cerrarSesion)
+
+router.get('/rememberPass', (req, res)=>{
+    res.render('olvideMiContraseña')
+})
+
+router.post('/rememberPass',[
+    body('email', "Ingrese un correo electrónico válido")
+        .trim()
+        .isEmail()
+        .normalizeEmail(),
+], enviarResetPass)
+
+
+router.get('/reestablecerPassword/:id', (req, res)=>{
+    res.render('editarPassword')
+})
+
+router.post('/reestablecerPassword/:id',[
+    body('password', "La contaseña debe tener al menos 6 carácteres")
+        .trim()
+        .isLength({min:6})
+        .escape()
+        .custom((value, {req})=>{
+            if(value !== req.body.rePassword){
+                throw new Error('Las contraseñas no coinciden')
+            }
+            else{
+                return value;
+            }
+    })
+], guardarNuevaPass)
 
 //router.get('/eliminarCuenta/:id', verificarUser, eliminarCuenta)
 

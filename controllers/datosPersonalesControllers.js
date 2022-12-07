@@ -51,6 +51,12 @@ const agregarDatosPersonales = async(req, res)=>{
             throw new Error("Debe completar los campos obligatorios: (*)")
         if(!pais) 
             throw new Error("Debe completar los campos obligatorios: (*)")
+        if(!telefono) 
+            throw new Error("Debe completar los campos obligatorios: (*)")
+        if(!altura) 
+            throw new Error("Debe completar los campos obligatorios: (*)")
+        if(!calle) 
+            throw new Error("Debe completar los campos obligatorios: (*)")
 
         await personaldata.save()
         req.flash("mensajes", [{msg: "Datos agregados correctamente"}])
@@ -86,16 +92,34 @@ const editarDatosPersonales = async(req, res)=>{
 //Guarda los datos editados 
 const guardarDatosEditados = async(req, res)=>{
     const {id} = req.params
-    const {nombre, apellido, calle, altura, cp, pais, telefono} = req.body
+    let {nombre, apellido, calle, altura, cp, pais, telefono} = req.body
     
     try{
         const personaldata = await PersonalData.findById(id)
         if(!personaldata.user.equals(req.user.id)){
             throw new Error("No posee permiso para editar los datos")
         }
-        if(!nombre && !apellido && !calle && !altura && !cp && !pais && !telefono)
-            throw new Error("No hay datos para actualizar")
-
+        if(!nombre){
+            nombre = personaldata.nombre
+        }
+        if(!apellido){
+            apellido = personaldata.apellido
+        }
+        if(!calle) {
+            calle = personaldata.calle
+        }
+        if(!altura){
+            altura = personaldata.altura
+        }
+        if(!telefono){
+            telefono = personaldata.telefono
+        }
+        if(!pais){
+            pais = personaldata.pais
+        }
+        if(!cp){
+            cp = personaldata.cp
+        }
         await personaldata.updateOne({nombre, apellido, calle, altura, cp, pais, telefono})
         req.flash("mensajes", [{msg: "Datos actualizados"}])
         0
@@ -108,38 +132,17 @@ const guardarDatosEditados = async(req, res)=>{
 }
 
 
-//Elimina todos los Datos Personales segun el ID
-const eliminarDatosPersonales = async(req, res)=>{
-    const {id} = req.params
-    console.log(id)
-    try{
-        await User.findById(id)
-
-        await User.remove()
-        req.flash("mensajes", [{msg: "Datos eliminados correctamente"}])
-
-        res.redirect('/')
-    }
-    catch(error){
-        req.flash("mensajes", [{msg: error.message}])
-        return res.redirect('/datosPersonales/verMisDatos')
-    }
-}
-
 //Muestra el Form de Editar Foto
 const formEditarFoto = async(req, res)=>{
     try{
         const user = await User.findById(req.user.id)
-        console.log(user)
-        res.render('editarFoto', {user: req.user, imagen: user.imagen})  
+        res.render('editarFotoPerfil', {user: req.user, imagen: user.imagen})  
     }
     catch(error){
         req.flash("mensajes", [{msg: "Error al mostrar la imagen"}])
         res.redirect('datosPerfil')
     }
-    res.render('editarFoto')
 }
-
 
 //Guarda la foto de perfil nueva
 const editarFoto = async(req, res)=>{
@@ -180,7 +183,7 @@ const editarFoto = async(req, res)=>{
         }
         catch(error){
             req.flash("mensajes", [{msg: error.message}])
-            res.redirect('/datosPersonales/verMisDatos')
+            res.redirect('editarFotoPerfil')
         }
     })
 }
@@ -200,12 +203,55 @@ const formEditarExperiencia = async(req, res)=>{
 //Guarda los datos nuevos de Experiencia
 const editarExperiencia = async(req, res)=>{
     const {id} = req.params
-    const {puesto, empresa, desde, hasta,descripcion,puesto2,empresa2,desde2,hasta2,descripcion2,puesto3,empresa3,desde3,hasta3,descripcion3} = req.body
+    let {puesto, empresa, desde, hasta,descripcion,puesto2,empresa2,desde2,hasta2,descripcion2,puesto3,empresa3,desde3,hasta3,descripcion3} = req.body
     try{
         const laboralData = await LaboralData.findById(id)
+        if(!puesto){
+            puesto = laboralData.puesto
+        }
+        if(!empresa){
+            empresa = laboralData.empresa
+        }
+        if(!desde){
+            desde = laboralData.desde
+        }
+        if(!hasta){
+            hasta = laboralData.hasta
+        }
+        if(!descripcion){
+            descripcion = laboralData.descripcion
+        }
 
-        if(!puesto && !empresa && !desde && !hasta && !descripcion && !puesto2 && !empresa2 && !desde2 && !hasta2 && !descripcion2 && !puesto3 && !empresa3 && !desde3 && !hasta3 && !descripcion3)
-            throw new Error("No hay datos para actualizar")
+        if(!puesto2){
+            puesto2 = laboralData.puesto2
+        }
+        if(!empresa2){
+            empresa2 = laboralData.empresa2
+        }
+        if(!desde2){
+            desde2 = laboralData.desde2
+        }
+        if(!hasta2){
+            hasta2 = laboralData.hasta2
+        }
+        if(!descripcion2){
+            descripcion2 = laboralData.descripcion2
+        }
+        if(!puesto3){
+            puesto3 = laboralData.puesto3
+        }
+        if(!empresa3){
+            empresa3 = laboralData.empresa3
+        }
+        if(!desde3){
+            desde3 = laboralData.desde3
+        }
+        if(!hasta3){
+            hasta3 = laboralData.hasta3
+        }
+        if(!descripcion3){
+            descripcion3 = laboralData.descripcion3
+        }
 
         await laboralData.updateOne({puesto, empresa, desde, hasta,descripcion,puesto2,empresa2,desde2,hasta2,descripcion2,puesto3,empresa3,desde3,hasta3,descripcion3})
 
@@ -234,11 +280,12 @@ const formEditarPerfil = async(req, res)=>{
 //Guarda los datos nuevos de Perfil
 const editarPerfil = async(req, res)=>{
     const {id} = req.params
-    const {descripcionPerfil} = req.body
+    let {descripcionPerfil} = req.body
     try{
         const descripcionData = await DescripcionData.findById(id)
-        if(!descripcionPerfil || descripcionPerfil== "" || descripcionPerfil == null)
-            throw new Error("No hay datos para actualizar")
+        if(!descripcionPerfil){
+            descripcionPerfil = descripcionData.descripcionPerfil
+        }
 
         await descripcionData.updateOne({descripcionPerfil})
 
@@ -266,12 +313,38 @@ const formEditarFormacion = async(req, res)=>{
 //Guarda los datos nuevos de Formación
 const editarFormacion = async(req, res)=>{
     const {id} = req.params
-    const {carrera, instituto, finalizado,carrera2, instituto2, finalizado2,carrera3, instituto3, finalizado3} = req.body
+    let {carrera, instituto, finalizado,carrera2, instituto2, finalizado2,carrera3, instituto3, finalizado3} = req.body
     try{
         const laboralData = await LaboralData.findById(id)
+        if(!carrera){
+            carrera = laboralData.carrera
+        }
+        if(!instituto){
+            instituto = laboralData.instituto
+        }
+        if(!finalizado){
+            finalizado = laboralData.finalizado
+        }
 
-        if(!carrera && !instituto && !finalizado && !carrera2 && !instituto2 && !finalizado2 && !carrera3 && !instituto3 && !finalizado3)
-            throw new Error("No hay datos para actualizar")
+        if(!carrera2){
+            carrera2 = laboralData.carrera2
+        }
+        if(!instituto2){
+            instituto2 = laboralData.instituto2
+        }
+        if(!finalizado2){
+            finalizado2 = laboralData.finalizado2
+        }
+
+        if(!carrera3){
+            carrera3 = laboralData.carrera3
+        }
+        if(!instituto3){
+            instituto3 = laboralData.instituto3
+        }
+        if(!finalizado3){
+            finalizado3 = laboralData.finalizado3
+        }
 
         await laboralData.updateOne({carrera, instituto, finalizado,carrera2, instituto2, finalizado2,carrera3, instituto3, finalizado3})
 
@@ -300,13 +373,30 @@ const formEditarIdioma = async(req, res)=>{
 //Guarda los datos nuevos de Idiomas
 const editarIdioma = async(req, res)=>{
     const {id} = req.params
-    const {idioma, nivel, idioma2, nivel2, idioma3, nivel3} = req.body
+    let {idioma, nivel, idioma2, nivel2, idioma3, nivel3} = req.body
     
     try{
         const laboralData = await LaboralData.findById(id)
+        if(!idioma){
+            idioma = laboralData.idioma
+        }
+        if(!nivel){
+            nivel = laboralData.nivel
+        }
 
-        if(!idioma && !nivel && !idioma2 && !nivel2 && !idioma3 && !nivel3)
-            throw new Error("No hay datos para actualizar")
+        if(!idioma2){
+            idioma2 = laboralData.idioma2
+        }
+        if(!nivel2){
+            nivel2 = laboralData.nivel2
+        }
+
+        if(!idioma3){
+            idioma3 = laboralData.idioma3
+        }
+        if(!nivel3){
+            nivel3 = laboralData.nivel3
+        }
 
         await laboralData.updateOne({idioma, nivel, idioma2, nivel2, idioma3, nivel3})
 
@@ -320,14 +410,53 @@ const editarIdioma = async(req, res)=>{
     }
 }
 
+//Elimina todos los Datos Personales segun el ID
+const eliminarCuenta = async(req, res)=>{
+    const {id} = req.params
+    
+    try{
+        console.log(id)
+        /*await User.findById(id)
+
+        await User.remove()
+        req.flash("mensajes", [{msg: "Datos eliminados correctamente"}])
+
+        res.redirect('/')*/
+
+
+        res.render('eliminarCuenta')
+
+    }
+    catch(error){
+        req.flash("mensajes", [{msg: error.message}])
+        return res.redirect('/datosPersonales/verMisDatos')
+    }
+}
+
+const confirmEliminar = async(req, res)=>{
+    const {id} = req.params;
+    try{
+        
+        console.log(id);
+        await User.findByIdAndDelete(id)
+        req.flash("mensajes", [{msg: "Su cuenta ha sido eliminada"}])
+        res.redirect('/')
+    }
+    catch(error){
+        req.flash("mensajes", [{msg: error.message}])
+        return res.redirect('/datosPersonales/verMisDatos')
+    }
+}
 
 module.exports = {
-    leerDatosPersonales,agregarDatosPersonales,eliminarDatosPersonales,
+    leerDatosPersonales,agregarDatosPersonales,
     editarDatosPersonales,guardarDatosEditados,
     formEditarFoto,editarFoto,
     formEditarExperiencia,editarExperiencia,
     formEditarPerfil,editarPerfil,
     formEditarFormacion,editarFormacion,
-    formEditarIdioma,editarIdioma
+    formEditarIdioma,editarIdioma,
+    eliminarCuenta,
+    confirmEliminar
 }
 

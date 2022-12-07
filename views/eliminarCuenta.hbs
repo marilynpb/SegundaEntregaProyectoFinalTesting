@@ -36,18 +36,17 @@ html{
     background-color: white;
     box-shadow: 3px 3px rgba(60, 58, 58, 0.21), 0.2em 0 1em rgb(36, 36, 35);
     padding: 6vh;
-    padding-top: 0%;
     margin: 5vh;
 }
 
 .datosCuenta div h3{
     margin-bottom: 5vh;
     color:rgb(85, 81, 81);
-    text-align: start;
+    text-align: center;
 }
 
-.datosCuenta div div{
-    box-shadow: none;
+h3{
+    clear: both;
 }
 
 form{
@@ -60,6 +59,12 @@ form{
     margin-top: 0%;
     font-size: 3vh;
     color: #4A69DC; 
+    text-align: center;
+}
+
+form div{
+    width: 100%;
+    background-color: #a904fc;
 }
 
 input{
@@ -87,16 +92,15 @@ form p{
     font-weight: bold;
     font-size: 2.5vh;
     margin-bottom: 2vh;
-    text-align: end;
+    text-align: center;
     clear: both;
 }
 
 h1{
     padding-top: 0%;
     margin-top: 0%;
-    margin-bottom: 5vh;
     font-size: 4.2vh;
-    color: #3c3a3a;
+    text-align: center;
 }
 
 form h2{
@@ -104,6 +108,15 @@ form h2{
     text-align: center;
     margin-bottom: 5vh;
     color: rgb(0, 76, 255);
+}
+
+textarea{
+    clear: both;
+    width: 80%;
+    min-height: 20vh;
+    margin-bottom: 8vh;
+    background-color: #ede8e8;
+
 }
 
 span{
@@ -145,6 +158,10 @@ a:hover{
     color: #4f4e50;
 }
 
+.pregunta{
+    color: #3c3a3a;
+}
+
 .correElectronico{
     width: 70%;
 }
@@ -176,8 +193,18 @@ a:hover{
     background-color: #9b969f8a;
 }
 
-.elegirFoto{
+.eliminar{
+    margin: 0%;
+    padding: 0%;
+    text-align: center;
+    margin-top: 10vh;
+    text-decoration: none;
+    color: #a904fc;
+    clear: both;
+}
 
+.eliminar:hover{
+    color: #b970ea;
 }
 
 /*-------------- MediaQuerys -----------*/
@@ -371,18 +398,22 @@ a:hover{
 
     </style>
     <header><a href="/datosPersonales/verMisDatos">⤺Volver</a></header>
-    <title>Editar mi foto/title>
+    <title>Eliminar mi Cuenta</title>
     {{>alertas}}
     <div class="datosCuenta"> 
-                <form action="datosPerfil?_csrf={{csrfToken}}" method="post" enctype="multipart/form-data">
+                <form>
+                    <input type="hidden" name="_csrf" value="{{csrfToken}}"/>
+                    <h1>Eliminar mi Cuenta</h1>
                     <div>
+                        
+                        <br>
+                        <h1 class="pregunta">¿Está seguro que desea eliminar su cuenta?</h1>
+                        <p>Todos sus datos almacenados se perderán</p>
+                        <br>
+
                         <span>-</span>
-                        <h1>Actualizar mi foto</h1>
-                        <label class="elegirFoto">Elegir foto</label>
-                        <input type="file" name="myFile" id="formFileSm">    
-                    <div class="siguiente">
-                        <button type="submit" class="guardar">Subir foto</button>
+                        <a href="confirmEliminar/{{this._id}}" class="eliminar">Sí, eliminar mi cuenta</a>
+                        <a href="/datosPersonales/verMisDatos"><button class="guardar" type="button">Cancelar</button></a>
                     </div>
-                    </div>
-                </form> 
+                </form>
         </div>

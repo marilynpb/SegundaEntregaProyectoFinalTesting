@@ -3,7 +3,6 @@ const express = require('express');
 const { 
     agregarDatosPersonales, 
     leerDatosPersonales, 
-    eliminarDatosPersonales, 
     editarDatosPersonales, 
     guardarDatosEditados, 
     formEditarFoto,
@@ -15,7 +14,9 @@ const {
     formEditarFormacion,
     editarFormacion,
     formEditarIdioma,
-    editarIdioma
+    editarIdioma,
+    eliminarCuenta,
+    confirmEliminar
 } = require('../controllers/datosPersonalesControllers');
 const verificarUser = require('../middlewares/verificarUser')
 
@@ -27,12 +28,11 @@ router.get('/datosPersonales', verificarUser, (req, res)=>{
 
 router.post('/datosPersonales',verificarUser, agregarDatosPersonales)
 router.get('/verMisDatos', verificarUser, leerDatosPersonales)
-router.get('/eliminar/:id', verificarUser, eliminarDatosPersonales)
 router.get('/editar/:id', verificarUser, editarDatosPersonales)
 router.post('/editar/:id', verificarUser, guardarDatosEditados)
 
-router.get('/editarFoto/:id' , verificarUser, formEditarFoto)
-router.post('/editarFoto/:id' , verificarUser, editarFoto)
+router.get('/editarFotoPerfil/:id' , verificarUser, formEditarFoto)
+router.post('/editarFotoPerfil/:id' , verificarUser, editarFoto)
 
 router.get('/editarExperiencia/:id', verificarUser, formEditarExperiencia)
 router.post('/editarExperiencia/:id', verificarUser, editarExperiencia)
@@ -45,6 +45,9 @@ router.post('/editarFormacion/:id', verificarUser, editarFormacion)
 
 router.get('/editarIdioma/:id', verificarUser, formEditarIdioma)
 router.post('/editarIdioma/:id', verificarUser, editarIdioma)
+
+router.get('/eliminarCuenta', verificarUser, eliminarCuenta)
+router.post('/confirmEliminar/:id', verificarUser, confirmEliminar)
 
 
 

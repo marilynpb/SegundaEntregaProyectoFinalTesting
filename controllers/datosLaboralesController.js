@@ -1,6 +1,7 @@
 const LaboralData = require('../models/LaboralData')
 const PersonalData = require('../models/PersonalData')
 
+//Guarda los datos laborales y de formación
 const agregarDatos = async(req, res)=>{
     const {
         carrera, instituto, finalizado,carrera2, instituto2, finalizado2,carrera3, instituto3, finalizado3, puesto, empresa, desde, hasta, descripcion, puesto2, empresa2, desde2, hasta2, descripcion2, puesto3, empresa3, desde3, hasta3, descripcion3, idioma, nivel, idioma2, nivel2, idioma3, nivel3,
@@ -81,42 +82,7 @@ const agregarDatos = async(req, res)=>{
     }
 }
 
-/*const formEditarExperiencia = async(req, res)=>{
-    try{
-        const laboralData =  await LaboralData.findById(req.user.id)
-        res.render('editarExperiencia', {laboralData: laboralData})
-    }
-    catch(error){
-        req.flash("mensajes", [{msg: "Error al cargar el formulario"}])
-        res.redirect('/datosPersonales/verMisDatos')
-    }
-}
-
-const editarExperiencia = async(req, res)=>{
-    const {puesto, empresa, desde, hasta,descripcion,puesto2,empresa2,desde2,hasta2,descripcion2,puesto3,empresa3,desde3,hasta3,descripcion3} = req.body
-    try{
-        const personaldata = await PersonalData.findById(id)
-        if(!personaldata.user.equals(req.user.id)){
-            throw new Error("No posee permiso para editar los datos")
-        }
-        if(!puesto && !empresa && !desde && !hasta && !descripcion && !puesto2 && !empresa2 && !desde2 && !hasta2 && !descripcion2 && !puesto3 && !empresa3 && !desde3 && !hasta3 && !descripcion3)
-            throw new Error("No hay datos para actualizar")
-
-        await personaldata.updateOne({puesto, empresa, desde, hasta,descripcion,puesto2,empresa2,desde2,hasta2,descripcion2,puesto3,empresa3,desde3,hasta3,descripcion3})
-
-        req.flash("mensajes", [{msg: "Datos actualizados"}])
-        
-        res.redirect('/datosPersonales/verMisDatos')
-    }
-    catch(error){
-        req.flash("mensajes", [{msg: error.message}])
-        return res.redirect('verMisDatos/verMisDatos')
-    }
-}*/
-
 
 module.exports = {
     agregarDatos,
-    //formEditarformacion,
-    //editarExperiencia
 }

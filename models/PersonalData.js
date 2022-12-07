@@ -30,12 +30,12 @@ const PersonalDataSchema = new Schema({
     calle:{
         type: String,
         unique:false,
-        required: false
+        required: true
     },
     altura:{
         type: Number,
         unique:false,
-        required: false
+        required: true
     },
     cp:{
         type: Number,
@@ -50,7 +50,7 @@ const PersonalDataSchema = new Schema({
     telefono:{
         type: Number,
         unique:false,
-        required: false
+        required: true
     },
     user: {
         type: Schema.Types.ObjectId, 

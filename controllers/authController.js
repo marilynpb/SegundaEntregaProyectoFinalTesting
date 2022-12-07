@@ -57,7 +57,6 @@ const registerUser = async(req, res)=>{
                     <br><br><p>Atentamente,</p><p>Equipo FreeCVMaker!💖</p>`,
         });
 
-
         req.flash("mensajes", 
         [{msg: "Necesitás activar tu cuenta, por favor revisá tu correo electrónico y accede al link de confirmación que te hemos enviado"}])
 
@@ -68,7 +67,6 @@ const registerUser = async(req, res)=>{
         return res.redirect('/auth/register')
     }
 }
-
 
 //Confirmarcion de cuenta a través de un Token
 const confirmarCuenta = async (req, res)=>{
@@ -125,7 +123,6 @@ const loginUser = async(req, res)=>{
     }
 }
 
-
 //Cerrar sesión
 const cerrarSesion = (req, res)=>{
     req.logout(function(err){
@@ -137,9 +134,85 @@ const cerrarSesion = (req, res)=>{
     })
 }
 
+
+//Formulario de Reestablecer Password y envio de email de reestablecer
+const enviarResetPass = async(req, res)=>{
+    const {email} = req.body
+    try{
+        
+        const user = await User.findOne({email})
+        if(!user) throw new Error("No existe un usuario registrado con ese Email")
+
+        //Envía correo de reset
+        const transport = nodemailer.createTransport({
+            host: "smtp.mailtrap.io",
+            port: 2525,
+            auth: {
+            user: "300b9ef3b1b13e",
+            pass: "a2f7ffdebdab15"
+            }
+        });
+        
+        await transport.sendMail({
+            from: '"🔹 FreeCVMaker 🔹" <FreeCVMaker@example.com>',
+            to: user.email,
+            subject: "Reestablecer contraseña",
+            html: `<h2>FreeCVMaker<h2>
+                    <h2>Reestablecé tu contraseña<h2>
+                    <p>Para hacerlo hacé click aquí:</p>
+                    <a href="http://localhost:3000/auth/reestablecerPassword/${user._id}">Reestablecer mi contraseña</a>
+                    <br><br><p>Atentamente,</p><p>Equipo FreeCVMaker!💖</p>`,
+        });
+
+        req.flash("mensajes", 
+        [{msg: "Por favor, revise su correo electrónico para reestablecer su contraseña"}])
+
+        res.redirect('/auth/login')
+    }
+    catch(error){
+        req.flash("mensajes", [{msg: error.message}])
+        return res.redirect('/auth/rememberPass')
+    }
+}
+
+
+//Guarda la nueva Password
+const guardarNuevaPass = async(req, res)=>{
+    const {id} = req.params
+    const {password} = req.body
+
+    const errors = validationResult(req)
+    if(!errors.isEmpty()){
+        req.flash("mensajes", errors.array())
+        return res.redirect(`/auth/reestablecerPassword/${id}`)
+    }
+
+    try{
+        const user = await User.findById(id)
+        console.log(user)
+
+        if(!password){
+            throw new Error("Debe escribir una nueva contraseña")
+        }
+        console.log(id)
+        console.log({password})
+        console.log(user)
+
+        await user.updateOne({password})
+
+        req.flash("mensajes", [{msg: "Su contraseña ha sido reestablecida"}])
+        
+        res.redirect('/auth/login')
+    }
+    catch(error){
+        req.flash("mensajes", [{msg: error.message}])
+        return res.redirect(`/auth/reestablecerPassword/${id}`)
+    }
+}
+
+
 //Elimina cuenta segun el ID
 const eliminarCuenta = async(req, res)=>{
-
     try{
         const user = await User.find({user: req.user.id})
         console.log(user)
@@ -156,20 +229,7 @@ const eliminarCuenta = async(req, res)=>{
         req.flash("mensajes", [{msg: error.message}])
         return res.redirect('verMisDatos/verMisDatos')
     }
-    
 }
-/*
-const mostrarDatosUser = async(req, res)=>{
-    try{
-        const user = await User.find({user: req.user.id}).lean()
-        res.render('verMisDatos', {user:user})
-    }
-    catch(error){
-        req.flash("mensajes", [{msg: error.message}])
-        res.redirect('/verMisDatos/verMisDatos')
-    }
-}*/
-
 
 
 module.exports = {
@@ -179,5 +239,7 @@ module.exports = {
     loginForm,
     loginUser,
     cerrarSesion,
-    eliminarCuenta
+    eliminarCuenta,
+    enviarResetPass,
+    guardarNuevaPass
 }
