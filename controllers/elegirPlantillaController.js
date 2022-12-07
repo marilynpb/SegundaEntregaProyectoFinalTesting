@@ -7,13 +7,11 @@ const User = require('../models/User')
 //Guarda la plantilla seleccionada
 const agregarPlantilla = async(req, res)=>{
     const {elegirPlantilla} = req.body
-
     try{
         const miPlantilla = new Plantilla({
             elegirPlantilla: elegirPlantilla,
             user: req.user.id
         })
-
         if(!elegirPlantilla){
             throw new Error("Debe elegir una plantilla")
         }

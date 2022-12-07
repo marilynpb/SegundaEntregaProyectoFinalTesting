@@ -5,11 +5,12 @@ const bcrypt = require('bcryptjs')
 const nodemailer = require("nodemailer")
 require('dotenv').config()
 
-
+//Render Form Registro
 const registerForm = (req, res)=>{
     res.render('register')
 }
 
+//Render Form Login
 const loginForm = (req, res)=>{
     res.render('login')
 }
@@ -30,7 +31,6 @@ const registerUser = async(req, res)=>{
 
     try{
         let user = await User.findOne({email:email})
-
         if(user) throw new Error("Ya existe un usuario registrado con ese Email")
         
         user = new User({email, password, tokenConfirm: randomId(largo, patrón)})
@@ -73,7 +73,6 @@ const confirmarCuenta = async (req, res)=>{
     const {token} = req.params
     try{
         const user = await User.findOne({tokenConfirm: token})
-
         if(!user) throw new Error("Usuario inválido")
 
         user.cuentaConfirmada = true
@@ -186,22 +185,14 @@ const guardarNuevaPass = async(req, res)=>{
         req.flash("mensajes", errors.array())
         return res.redirect(`/auth/reestablecerPassword/${id}`)
     }
-
     try{
         const user = await User.findById(id)
-        console.log(user)
-
         if(!password){
             throw new Error("Debe escribir una nueva contraseña")
         }
-        console.log(id)
-        console.log({password})
-        console.log(user)
 
         await user.updateOne({password})
-
         req.flash("mensajes", [{msg: "Su contraseña ha sido reestablecida"}])
-        
         res.redirect('/auth/login')
     }
     catch(error){
@@ -211,23 +202,36 @@ const guardarNuevaPass = async(req, res)=>{
 }
 
 
-//Elimina cuenta segun el ID
+//Formulario de eliminar cuenta
 const eliminarCuenta = async(req, res)=>{
+    const {id} = req.params
     try{
-        const user = await User.find({user: req.user.id})
-        console.log(user)
-
-        if(!user.user.equals(req.user.id)){
-            throw new Error("No posee permiso para eliminar los datos")
-        }
-        await user.remove()
-        req.flash("mensajes", [{msg: "Datos eliminados correctamente"}])
-
-        res.redirect('/')
+        const user = await User.findOne(id)
+        res.render(`eliminarCuenta`)
     }
     catch(error){
         req.flash("mensajes", [{msg: error.message}])
-        return res.redirect('verMisDatos/verMisDatos')
+        return res.redirect('/datosPersonales/verMisDatos')
+    }
+}
+
+
+//Elimina cuenta segun el ID
+const confirmEliminar = async(req, res)=>{
+    const {id} = req.params
+    try{
+        await User.deleteOne(id)
+        req.logout(function(err){
+            if(err){
+                return next(err)
+            }
+        req.flash("mensajes", [{msg: "Datos eliminados correctamente"}])
+        res.redirect('/')
+        })
+    }
+    catch(error){
+    req.flash("mensajes", [{msg: error.message}])
+    return res.redirect('/datosPersonales/verMisDatos')
     }
 }
 
@@ -241,5 +245,6 @@ module.exports = {
     cerrarSesion,
     eliminarCuenta,
     enviarResetPass,
-    guardarNuevaPass
+    guardarNuevaPass,
+    confirmEliminar
 }

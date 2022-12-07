@@ -10,12 +10,14 @@ const {
     cerrarSesion,
     eliminarCuenta,
     enviarResetPass,
-    guardarNuevaPass
+    guardarNuevaPass,
+    confirmEliminar
 } = require('../controllers/authController');
 const verificarUser = require('../middlewares/verificarUser');
 
 const router = express.Router();
 
+//Form Registro
 router.get('/register', registerForm)
 
 router.post('/register', [
@@ -38,8 +40,10 @@ router.post('/register', [
     })
 ], registerUser)
 
+//Verificar cuenta
 router.get('/confirmar/:token', confirmarCuenta)
 
+//Form login
 router.get('/login', loginForm)
 
 router.post('/login',[
@@ -54,8 +58,10 @@ router.post('/login',[
         .escape()
 ] ,loginUser)
 
+//Cerrar sesión
 router.get('/loguot', cerrarSesion)
 
+//Form olvidé mi contraseña
 router.get('/rememberPass', (req, res)=>{
     res.render('olvideMiContraseña')
 })
@@ -66,7 +72,6 @@ router.post('/rememberPass',[
         .isEmail()
         .normalizeEmail(),
 ], enviarResetPass)
-
 
 router.get('/reestablecerPassword/:id', (req, res)=>{
     res.render('editarPassword')
@@ -87,7 +92,9 @@ router.post('/reestablecerPassword/:id',[
     })
 ], guardarNuevaPass)
 
-//router.get('/eliminarCuenta/:id', verificarUser, eliminarCuenta)
+//Form eliminar cuenta
+router.get('/eliminarCuenta', verificarUser, eliminarCuenta)
+router.get('/confirmEliminar', verificarUser, confirmEliminar)
 
 
 module.exports = router

@@ -60,7 +60,6 @@ const agregarDatosPersonales = async(req, res)=>{
 
         await personaldata.save()
         req.flash("mensajes", [{msg: "Datos agregados correctamente"}])
-
         res.redirect('/datosLaborales/datosLaborales')
     }
     catch(error){
@@ -93,7 +92,6 @@ const editarDatosPersonales = async(req, res)=>{
 const guardarDatosEditados = async(req, res)=>{
     const {id} = req.params
     let {nombre, apellido, calle, altura, cp, pais, telefono} = req.body
-    
     try{
         const personaldata = await PersonalData.findById(id)
         if(!personaldata.user.equals(req.user.id)){
@@ -153,17 +151,14 @@ const editarFoto = async(req, res)=>{
             if(err){
                 throw new Error('Hubo un error al subir el archivo')
             }
-
             const file= files.myFile
             if(file.originalFilename === ""){
                 throw new Error("Por favor agrega una imagen")
             }
-    
             const imageTypes = ["image/jpeg", "image/png"]
             if(!imageTypes.includes(file.mimetype)){
                 throw new Error('El archivo debe ser .jpg o .png')
             }
-    
             if(file.size > 50 * 1024 * 1024){
                 throw new Error('El archivo no debe pesar mas de 50MB')
             }
@@ -177,7 +172,6 @@ const editarFoto = async(req, res)=>{
             user.imagen = `${req.user.id}.${extension}`
     
             await user.updateOne({imagen: user.imagen})
-    
             req.flash("mensajes", [{msg: "Datos actualizados"}])
             return res.redirect('/datosPersonales/verMisDatos')
         }
@@ -221,7 +215,6 @@ const editarExperiencia = async(req, res)=>{
         if(!descripcion){
             descripcion = laboralData.descripcion
         }
-
         if(!puesto2){
             puesto2 = laboralData.puesto2
         }
@@ -254,9 +247,7 @@ const editarExperiencia = async(req, res)=>{
         }
 
         await laboralData.updateOne({puesto, empresa, desde, hasta,descripcion,puesto2,empresa2,desde2,hasta2,descripcion2,puesto3,empresa3,desde3,hasta3,descripcion3})
-
         req.flash("mensajes", [{msg: "Datos actualizados"}])
-        
         res.redirect('/datosPersonales/verMisDatos')
     }
     catch(error){
@@ -288,7 +279,6 @@ const editarPerfil = async(req, res)=>{
         }
 
         await descripcionData.updateOne({descripcionPerfil})
-
         req.flash("mensajes", [{msg: "Datos actualizados"}])
         res.redirect('/datosPersonales/verMisDatos')
     }
@@ -325,7 +315,6 @@ const editarFormacion = async(req, res)=>{
         if(!finalizado){
             finalizado = laboralData.finalizado
         }
-
         if(!carrera2){
             carrera2 = laboralData.carrera2
         }
@@ -335,7 +324,6 @@ const editarFormacion = async(req, res)=>{
         if(!finalizado2){
             finalizado2 = laboralData.finalizado2
         }
-
         if(!carrera3){
             carrera3 = laboralData.carrera3
         }
@@ -347,9 +335,7 @@ const editarFormacion = async(req, res)=>{
         }
 
         await laboralData.updateOne({carrera, instituto, finalizado,carrera2, instituto2, finalizado2,carrera3, instituto3, finalizado3})
-
         req.flash("mensajes", [{msg: "Datos actualizados"}])
-        
         res.redirect('/datosPersonales/verMisDatos')
     }
     catch(error){
@@ -383,14 +369,12 @@ const editarIdioma = async(req, res)=>{
         if(!nivel){
             nivel = laboralData.nivel
         }
-
         if(!idioma2){
             idioma2 = laboralData.idioma2
         }
         if(!nivel2){
             nivel2 = laboralData.nivel2
         }
-
         if(!idioma3){
             idioma3 = laboralData.idioma3
         }
@@ -399,9 +383,7 @@ const editarIdioma = async(req, res)=>{
         }
 
         await laboralData.updateOne({idioma, nivel, idioma2, nivel2, idioma3, nivel3})
-
         req.flash("mensajes", [{msg: "Datos actualizados"}])
-        
         res.redirect('/datosPersonales/verMisDatos')
     }
     catch(error){
@@ -410,43 +392,6 @@ const editarIdioma = async(req, res)=>{
     }
 }
 
-//Elimina todos los Datos Personales segun el ID
-const eliminarCuenta = async(req, res)=>{
-    const {id} = req.params
-    
-    try{
-        console.log(id)
-        /*await User.findById(id)
-
-        await User.remove()
-        req.flash("mensajes", [{msg: "Datos eliminados correctamente"}])
-
-        res.redirect('/')*/
-
-
-        res.render('eliminarCuenta')
-
-    }
-    catch(error){
-        req.flash("mensajes", [{msg: error.message}])
-        return res.redirect('/datosPersonales/verMisDatos')
-    }
-}
-
-const confirmEliminar = async(req, res)=>{
-    const {id} = req.params;
-    try{
-        
-        console.log(id);
-        await User.findByIdAndDelete(id)
-        req.flash("mensajes", [{msg: "Su cuenta ha sido eliminada"}])
-        res.redirect('/')
-    }
-    catch(error){
-        req.flash("mensajes", [{msg: error.message}])
-        return res.redirect('/datosPersonales/verMisDatos')
-    }
-}
 
 module.exports = {
     leerDatosPersonales,agregarDatosPersonales,
@@ -455,8 +400,6 @@ module.exports = {
     formEditarExperiencia,editarExperiencia,
     formEditarPerfil,editarPerfil,
     formEditarFormacion,editarFormacion,
-    formEditarIdioma,editarIdioma,
-    eliminarCuenta,
-    confirmEliminar
+    formEditarIdioma,editarIdioma
 }
 

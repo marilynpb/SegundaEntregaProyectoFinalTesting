@@ -14,9 +14,7 @@ const {
     formEditarFormacion,
     editarFormacion,
     formEditarIdioma,
-    editarIdioma,
-    eliminarCuenta,
-    confirmEliminar
+    editarIdioma
 } = require('../controllers/datosPersonalesControllers');
 const verificarUser = require('../middlewares/verificarUser')
 
@@ -28,6 +26,8 @@ router.get('/datosPersonales', verificarUser, (req, res)=>{
 
 router.post('/datosPersonales',verificarUser, agregarDatosPersonales)
 router.get('/verMisDatos', verificarUser, leerDatosPersonales)
+
+//Formularios para editar datos
 router.get('/editar/:id', verificarUser, editarDatosPersonales)
 router.post('/editar/:id', verificarUser, guardarDatosEditados)
 
@@ -45,10 +45,6 @@ router.post('/editarFormacion/:id', verificarUser, editarFormacion)
 
 router.get('/editarIdioma/:id', verificarUser, formEditarIdioma)
 router.post('/editarIdioma/:id', verificarUser, editarIdioma)
-
-router.get('/eliminarCuenta', verificarUser, eliminarCuenta)
-router.post('/confirmEliminar/:id', verificarUser, confirmEliminar)
-
 
 
 module.exports = router
