@@ -1,4 +1,9 @@
 const User = require("../models/User")
+const LaboralData = require('../models/LaboralData')
+const PerfilData = require('../models/PerfilData')
+const Plantilla = require('../models/Plantilla')
+const PersonalData = require('../models/PersonalData')
+const DescripcionData = require('../models/DescripcionData')
 const {validationResult} = require('express-validator')
 const randomId = require('random-id');
 const bcrypt = require('bcryptjs')
@@ -221,6 +226,13 @@ const confirmEliminar = async(req, res)=>{
     const {id} = req.params
     try{
         await User.deleteOne(id)
+        const datosDescripcion = await DescripcionData.deleteOne(id)
+        const personaldatas = await PersonalData.deleteOne(id) 
+        const laboralData = await LaboralData.deleteOne(id)
+        const descripcionData = await DescripcionData.deleteOne(id)
+        const plantilla = await Plantilla.deleteOne(id)
+        const perfil = await PerfilData.deleteOne(id)
+        
         req.logout(function(err){
             if(err){
                 return next(err)
