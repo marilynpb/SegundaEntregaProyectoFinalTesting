@@ -369,30 +369,32 @@ a:hover{
     }
 }
 
-    </style>
-    <header><a href="/datosPersonales/verMisDatos">⤺Volver</a></header>
-    <title>Editar mis datos personales</title>
-    {{>alertas}}
-    <div class="datosCuenta"> 
-                <form action="" method="post">
-                    <input type="hidden" name="_csrf" value="{{csrfToken}}"/>
-                    <h1>Editar mis datos personales</h1>
-                    <div>
-                        <h3>Datos Personales</h3>
-                        <label>Nombre</label>
-                        <input type="text" name="nombre" value={{this.nombre}}>
-                        <label>Apellido</label>
-                        <input type="text" class="apellido" name="apellido" value={{this.apellido}}>
-                        <label>Teléfono</label>
-                        <input type="text" name="telefono" value={{this.telefono}}>
-                        <label>Código Pos</label>
-                        <input type="text" name="cp" value={{this.cp}}>
-                        <label>Dirección(calle)</label>
-                        <input type="text" name="calle" value={{this.calle}}>
-                        <label>Altura</label>
-                        <input type="text" name="altura" value={{this.altura}}>
-                        <span>-</span>
-                        <button class="guardar" type="submit">Guardar</button>
-                    </div>
-                </form>
+</style>
+<header><a href="/datosPersonales/verMisDatos">⤺Volver</a></header>
+<title>Editar mis datos personales</title>
+
+{{>alertas}}
+
+<div class="datosCuenta"> 
+    <form action="" method="post">
+        <input type="hidden" name="_csrf" value="{{csrfToken}}"/>
+        <h1>Editar mis datos personales</h1>
+        <div>
+            <h3>Datos Personales</h3>
+            <label>Nombre</label>
+            <input type="text" name="nombre" value={{this.nombre}}>
+            <label>Apellido</label>
+            <input type="text" class="apellido" name="apellido" value={{this.apellido}}>
+            <label>Teléfono</label>
+            <input type="text" name="telefono" value={{this.telefono}}>
+            <label>Código Pos</label>
+            <input type="text" name="cp" value={{this.cp}}>
+            <label>Dirección(calle)</label>
+            <input type="text" name="calle" value={{this.calle}}>
+            <label>Altura</label>
+            <input type="text" name="altura" value={{this.altura}}>
+            <span>-</span>
+            <button class="guardar" type="submit">Guardar</button>
         </div>
+    </form>
+</div>

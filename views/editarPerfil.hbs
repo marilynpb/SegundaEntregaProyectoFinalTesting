@@ -109,7 +109,7 @@ textarea{
     min-height: 20vh;
     margin-bottom: 8vh;
     background-color: #ede8e8;
-
+    font-size: 3vh;
 }
 
 span{
@@ -371,24 +371,26 @@ a:hover{
         font-size: 3.5vh;
     }
 }
+</style>
 
-    </style>
-    <header><a href="/datosPersonales/verMisDatos">⤺Volver</a></header>
-    <title>Editar mi perfíl</title>
-    {{>alertas}}
-    <div class="datosCuenta"> 
-                <form action="" method="post">
-                    <input type="hidden" name="_csrf" value="{{csrfToken}}"/>
-                    <h1>Editar mi perfíl</h1>
-                    <div>
-                        <h3>Mi Perfíl</h3>
-                        <label>Descripción</label>
-                        <span>-</span>
-                        <label class="entreParentesis">(una breve explicación sobre ti, tus logros, cualidades, objetivos, etc.)</label>
-                        <span>-</span>
-                        <textarea  type="text" name="descripcionPerfil" class="perfilTextarea">{{this.descripcionPerfil}}</textarea>
-                        <span>-</span>
-                        <button class="guardar" type="submit">Guardar</button>
-                    </div>
-                </form>
+<header><a href="/datosPersonales/verMisDatos">⤺Volver</a></header>
+<title>Editar mi perfíl</title>
+
+{{>alertas}}
+
+<div class="datosCuenta"> 
+    <form action="" method="post">
+        <input type="hidden" name="_csrf" value="{{csrfToken}}"/>
+        <h1>Editar mi perfíl</h1>
+        <div>
+            <h3>Mi Perfíl</h3>
+            <label>Descripción</label>
+            <span>-</span>
+            <label class="entreParentesis">(una breve explicación sobre ti, tus logros, cualidades, objetivos, etc.)</label>
+            <span>-</span>
+            <textarea  type="text" name="descripcionPerfil" class="perfilTextarea">{{this.descripcionPerfil}}</textarea>
+            <span>-</span>
+            <button class="guardar" type="submit">Guardar</button>
         </div>
+    </form>
+</div>

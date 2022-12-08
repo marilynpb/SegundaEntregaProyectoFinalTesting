@@ -14,21 +14,19 @@
                 <meter min="0" max="100" value="85" low="75" high="75" id="barra"></meter>
             </div>
             <div class="contForm">   
-                    <form method="post" action="">
-                        <input type="hidden" name="_csrf" value="{{csrfToken}}"/>
-                        <label>Descripción*</label>
-                        <span>-</span>
-                        <label class="entreParentesis">(una breve explicación sobre ti, tus logros, cualidades, objetivos, etc.)</label>
-                        <textarea id="descripcion" name="descripcionPerfil"></textarea>
+                <form method="post" action="">
+                    <input type="hidden" name="_csrf" value="{{csrfToken}}"/>
+                    <label>Descripción*</label>
+                    <span>-</span>
+                    <label class="entreParentesis">(una breve explicación sobre ti, tus logros, cualidades, objetivos, etc.)</label>
+                    <textarea id="descripcion" name="descripcionPerfil"></textarea>
                     <div class="siguiente">
                         <button type="submit">Siguiente</button>
                     </div>
-                    </form>
+                </form>
             </div>
-
         </div>
     </main>
 
-        {{>footer}}
-
+    {{>footer}}
 </body>

@@ -371,14 +371,16 @@ a:hover{
 </style>
 
 <header><a href="/datosPersonales/verMisDatos">⤺Volver</a></header>
+
 {{>alertas}}
+
 <div class="datosCuenta">
     <form action="datosPerfil?_csrf={{csrfToken}}" method="post" enctype="multipart/form-data">
         <div>
             <span>-</span>
-                <h1>Actualizar mi foto</h1>
-                <label class="elegirFoto">Elegir foto</label>
-                <input type="file" name="myFile" id="formFileSm">    
+            <h1>Actualizar mi foto</h1>
+            <label class="elegirFoto">Elegir foto</label>
+            <input type="file" name="myFile" id="formFileSm">    
             <div class="siguiente">
                 <button type="submit" class="guardar">Subir foto</button>
             </div>

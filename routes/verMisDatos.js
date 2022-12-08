@@ -7,5 +7,10 @@ router.get('/verMisDatos', verificarUser, (req, res)=>{
     res.render('verMisDatos')
 })
 
+router.get('/miCurriculum', verificarUser, (req, res)=>{
+    res.render('miCurriculum')
+})
+
+
 
 module.exports = router

@@ -6,7 +6,7 @@
             <a href="/"><img src="../img/LogoMakr-8VCzkk.png" class="logo" alt="logo"></a>
             <ul>
                 <li><img src="../img/Iconos/person-circle.svg" class="userIcon"></li>
-                <li><a href="./miCurriculum.html">Ver mi CV</a></li>
+                <li><a href="/verMisDatos/miCurriculum">Ver mi CV</a></li>
                 <li><a href="/verificarDatos/verificarDatos">Crear Curriculum</a></li>
                 <li><a href="/auth/loguot" ><div class="icono cerrarSesion"><p>Cerrar sesión</p><img src="../img/Iconos/box-arrow-in-right.svg"></a></div></li>
             </ul>
@@ -74,16 +74,16 @@
                             {{#each personaldatas}}
                             <a href="editar/{{this._id}}" class="editar"><img src="../img/Iconos/pencil-square.svg"></a>
                             <label>Nombre</label>
-                            <input type="text" name="nombre" disabled value={{this.nombre}}>
+                            <input type="text" name="nombre" disabled value="{{this.nombre}}">
                             <label>Apellido</label>
-                            <input type="text" class="apellido" name="apellido" disabled value={{this.apellido}}>
+                            <input type="text" class="apellido" name="apellido" disabled value="{{this.apellido}}">
                             <span>-</span>
                             <label>Teléfono</label>
                             <input type="text" name="telefono" disabled value={{this.telefono}}>
                             <label>Código Postal</label>
                             <input type="text" name="cp" disabled value={{this.cp}}>
                             <label>País</label>
-                            <input type="text" name="pais" disabled value={{this.pais}}>
+                            <input type="text" name="pais" disabled value="{{this.pais}}">
                             <label>Dirección(calle)</label>
                             <input type="text" name="calle" disabled value={{this.calle}}>
                             <label>Altura</label>
@@ -100,27 +100,27 @@
                         <div>
                             <h3 class="subtitulos">Formación n°1</h3><span>-</span>                            
                             <label>Carrera</label><span>-</span>
-                            <input type="text" name="carrera" disabled value={{this.carrera}}>
+                            <input type="text" name="carrera" disabled value="{{this.carrera}}">
                             <label>Instituto</label><span>-</span>
-                            <input type="text" class="instituto" name="instituto" disabled value={{this.instituto}}>
+                            <input type="text" class="instituto" name="instituto" disabled value="{{this.instituto}}">
                             <span>-</span>
                             <label>Año de egreso</label><span>-</span>
                             <input type="text" name="finalizado" disabled value={{this.finalizado}}>
 
                             <h3 class="subtitulos">Formación n°2</h3><span>-</span>
                             <label>Carrera</label><span>-</span>
-                            <input type="text" name="carrera2" disabled value={{this.carrera2}}>
+                            <input type="text" name="carrera2" disabled value="{{this.carrera2}}">
                             <label>Instituto</label><span>-</span>
-                            <input type="text" class="instituto" name="instituto2" disabled value={{this.instituto2}}>
+                            <input type="text" class="instituto" name="instituto2" disabled value="{{this.instituto2}}">
                             <span>-</span>
                             <label>Año de egreso</label><span>-</span>
                             <input type="text" name="finalizado2" disabled value={{this.finalizado2}}>
 
                             <h3 class="subtitulos">Formación n°3</h3><span>-</span>
                             <label>Carrera</label><span>-</span>
-                            <input type="text" name="carrera3" disabled value={{this.carrera3}}>
+                            <input type="text" name="carrera3" disabled value="{{this.carrera3}}">
                             <label>Instituto</label><span>-</span>
-                            <input type="text" class="instituto3" name="instituto" disabled value={{this.instituto3}}>
+                            <input type="text" class="instituto3" name="instituto" disabled value="{{this.instituto3}}">
                             <span>-</span>
                             <label>Año de egreso</label><span>-</span>
                             <input type="text" name="finalizado3" disabled value={{this.finalizado3}}>
@@ -130,9 +130,9 @@
                             <a href="editarExperiencia/{{this._id}}" class="editar"><img src="../img/Iconos/pencil-square.svg"></a>
                             <h3 class="subtitulos">Experiencia n°1</h3><span>-</span>
                             <label>Puesto</label><span>-</span>
-                            <input type="text" name="puesto" disabled value={{this.puesto}}>
+                            <input type="text" name="puesto" disabled value="{{this.puesto}}">
                             <label>Empresa</label><span>-</span>
-                            <input type="text" name="empresa" disabled value={{this.empresa}}>
+                            <input type="text" name="empresa" disabled value="{{this.empresa}}">
                             <label>Desde(año)*</label>
                             <input type="text" name="desde" placeholder="aaaa" class="selectLarge" id="desde1" value={{this.desde}}>
                             <span>-</span>
@@ -144,9 +144,9 @@
 
                             <h3 class="subtitulos">Experiencia n°2</h3><span>-</span>
                             <label>Puesto</label><span>-</span>
-                            <input type="text" name="puesto2" disabled value={{this.puesto2}}>
+                            <input type="text" name="puesto2" disabled value="{{this.puesto2}}">
                             <label>Empresa</label><span>-</span>
-                            <input type="text" name="empresa2" disabled value={{this.empresa2}}>
+                            <input type="text" name="empresa2" disabled value="{{this.empresa2}}">
                             <label>Desde(año)*</label>
                             <input type="text" name="desde2" placeholder="aaaa" class="selectLarge" id="desde2" value={{this.desde2}}>
                             <span>-</span>
@@ -158,9 +158,9 @@
 
                             <h3 class="subtitulos">Experiencia n°3</h3><span>-</span>
                             <label>Puesto</label><span>-</span>
-                            <input type="text" name="puesto3" disabled value={{this.puesto2}}>
+                            <input type="text" name="puesto3" disabled value="{{this.puesto2}}">
                             <label>Empresa</label><span>-</span>
-                            <input type="text" name="empresa3" disabled value={{this.empresa2}}>
+                            <input type="text" name="empresa3" disabled value="{{this.empresa2}}">
                             <label>Desde(año)*</label>
                             <input type="text" name="desde3" placeholder="aaaa" class="selectLarge" id="desde3" value={{this.desde3}}>
                             <span>-</span>
@@ -175,19 +175,19 @@
                             <a href="editarIdioma/{{this._id}}" class="editar"><img src="../img/Iconos/pencil-square.svg"></a>
                             <h3 class="subtitulos">Idioma n°1</h3><span>-</span>
                             <label>Idioma</label><span>-</span>
-                            <input type="text" name="idioma" disabled value={{this.idioma}} >
+                            <input type="text" name="idioma" disabled value="{{this.idioma}}">
                             <label>Nivel</label><span>-</span>
                             <input type="text" name="nivel" disabled value={{this.nivel}} >
                             
                             <h3 class="subtitulos">Idioma n°2</h3><span>-</span>
                             <label>Idioma</label><span>-</span>
-                            <input type="text" name="idioma2" disabled value={{this.idioma2}} >
+                            <input type="text" name="idioma2" disabled value="{{this.idioma2}}">
                             <label>Nivel</label><span>-</span>
                             <input type="text" name="nivel2" disabled value={{this.nivel2}} >
 
                             <h3 class="subtitulos">Idioma n°3</h3><span>-</span>
                             <label>Idioma</label><span>-</span>
-                            <input type="text" name="idioma3" disabled value={{this.idioma3}} >
+                            <input type="text" name="idioma3" disabled value="{{this.idioma3}}">
                             <label>Nivel</label><span>-</span>
                             <input type="text" name="nivel3" disabled value={{this.nivel3}} >
                             {{/each}}

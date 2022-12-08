@@ -20,7 +20,6 @@ const loginForm = (req, res)=>{
     res.render('login')
 }
 
-
 //Registro de usuarios
 const registerUser = async(req, res)=>{
 
@@ -29,7 +28,6 @@ const registerUser = async(req, res)=>{
         req.flash("mensajes", errors.array())
         return res.redirect('/auth/register')
     }
-
     const {email, password} = req.body
     var patrón = 'aA0'
     var largo = 30;
@@ -118,7 +116,7 @@ const loginUser = async(req, res)=>{
 
         req.login(user, function(err){
             if(err) throw new Error('Error al crear la sesión')
-            res.redirect('/')
+            res.redirect('/home')
         })
     }
     catch(error){

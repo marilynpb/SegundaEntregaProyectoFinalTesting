@@ -375,41 +375,41 @@ a:hover{
 <header><a href="/datosPersonales/verMisDatos">⤺Volver</a></header>
 <title>Editar mi Formación</title>
 
-    {{>alertas}}
+{{>alertas}}
 
-    <div class="datosCuenta"> 
-        <form action="" method="post">
-            <input type="hidden" name="_csrf" value="{{csrfToken}}"/>
-            <h1>Editar mi Formación</h1>
-            <div>
-                <h3 class="subtitulos">Formación n°1</h3><span>-</span>                            
-                <label>Carrera</label><span>-</span>
-                <input type="text" name="carrera" value={{this.carrera}}>
-                <label>Instituto</label><span>-</span>
-                <input type="text" class="instituto" name="instituto" value={{this.instituto}}>
-                <span>-</span>
-                <label>Año de egreso</label><span>-</span>
-                <input type="text" name="finalizado" value={{this.finalizado}}>
+<div class="datosCuenta"> 
+    <form action="" method="post">
+        <input type="hidden" name="_csrf" value="{{csrfToken}}"/>
+        <h1>Editar mi Formación</h1>
+        <div>
+            <h3 class="subtitulos">Formación n°1</h3><span>-</span>                            
+            <label>Carrera</label><span>-</span>
+            <input type="text" name="carrera" value={{this.carrera}}>
+            <label>Instituto</label><span>-</span>
+            <input type="text" class="instituto" name="instituto" value={{this.instituto}}>
+            <span>-</span>
+            <label>Año de egreso</label><span>-</span>
+            <input type="text" name="finalizado" value={{this.finalizado}}>
 
-                <h3 class="subtitulos">Formación n°2</h3><span>-</span>
-                <label>Carrera</label><span>-</span>
-                <input type="text" name="carrera2" value={{this.carrera2}}>
-                <label>Instituto</label><span>-</span>
-                <input type="text" class="instituto" name="instituto2" value={{this.instituto2}}>
-                <span>-</span>
-                <label>Año de egreso</label><span>-</span>
-                <input type="text" name="finalizado2"value={{this.finalizado2}}>
+            <h3 class="subtitulos">Formación n°2</h3><span>-</span>
+            <label>Carrera</label><span>-</span>
+            <input type="text" name="carrera2" value={{this.carrera2}}>
+            <label>Instituto</label><span>-</span>
+            <input type="text" class="instituto" name="instituto2" value={{this.instituto2}}>
+            <span>-</span>
+            <label>Año de egreso</label><span>-</span>
+            <input type="text" name="finalizado2"value={{this.finalizado2}}>
 
-                <h3 class="subtitulos">Formación n°3</h3><span>-</span>
-                <label>Carrera</label><span>-</span>
-                <input type="text" name="carrera3"value={{this.carrera3}}>
-                <label>Instituto</label><span>-</span>
-                <input type="text" class="instituto3" name="instituto3" value={{this.instituto3}}>
-                <span>-</span>
-                <label>Año de egreso</label><span>-</span>
-                <input type="text" name="finalizado3"value={{this.finalizado3}}>
-                <span>-</span><br>
-                <button class="guardar" type="submit">Guardar</button>
-            </div>
-        </form>
-    </div>
+            <h3 class="subtitulos">Formación n°3</h3><span>-</span>
+            <label>Carrera</label><span>-</span>
+            <input type="text" name="carrera3"value={{this.carrera3}}>
+            <label>Instituto</label><span>-</span>
+            <input type="text" class="instituto3" name="instituto3" value={{this.instituto3}}>
+            <span>-</span>
+            <label>Año de egreso</label><span>-</span>
+            <input type="text" name="finalizado3"value={{this.finalizado3}}>
+            <span>-</span><br>
+            <button class="guardar" type="submit">Guardar</button>
+        </div>
+    </form>
+</div>

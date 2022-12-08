@@ -399,21 +399,21 @@ a:hover{
     </style>
     <header><a href="/datosPersonales/verMisDatos">⤺Volver</a></header>
     <title>Eliminar mi Cuenta</title>
-    {{>alertas}}
-    <div class="datosCuenta"> 
-                <form>
-                    <input type="hidden" name="_csrf" value="{{csrfToken}}"/>
-                    <h1>Eliminar mi Cuenta</h1>
-                    <div>
-                        
-                        <br>
-                        <h1 class="pregunta">¿Está seguro que desea eliminar su cuenta?</h1>
-                        <p>Todos sus datos almacenados se perderán</p>
-                        <br>
 
-                        <span>-</span>
-                        <a href="/auth/confirmEliminar" class="eliminar">Sí, eliminar mi cuenta</a>
-                        <a href="/datosPersonales/verMisDatos"><button class="guardar" type="button">Cancelar</button></a>
-                    </div>
-                </form>
-        </div>
+    {{>alertas}}
+
+    <div class="datosCuenta"> 
+        <form>
+            <input type="hidden" name="_csrf" value="{{csrfToken}}"/>
+            <h1>Eliminar mi Cuenta</h1>
+            <div> 
+                <br>
+                <h1 class="pregunta">¿Está seguro que desea eliminar su cuenta?</h1>
+                <p>Todos sus datos almacenados se perderán</p>
+                <br>
+                <span>-</span>
+                <a href="/auth/confirmEliminar" class="eliminar">Sí, eliminar mi cuenta</a>
+                <a href="/datosPersonales/verMisDatos"><button class="guardar" type="button">Cancelar</button></a>
+            </div>
+        </form>
+    </div>
