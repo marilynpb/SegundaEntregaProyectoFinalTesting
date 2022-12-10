@@ -58,6 +58,7 @@ app.use((req, res, next)=>{
 })
 
 
+
 //Rutas
 app.use('/', require('./routes/home'))
 app.use('/datosPersonales', require('./routes/datosPersonales'))

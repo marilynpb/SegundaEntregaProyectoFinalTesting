@@ -3,6 +3,11 @@ const LaboralData = require('../models/LaboralData')
 const PersonalData = require('../models/PersonalData')
 const Plantilla = require('../models/Plantilla')
 const User = require('../models/User')
+const fs = require('fs-extra')
+const path = require('path')
+const hbs = require('hbs');
+const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
+
 
 //Guarda la plantilla seleccionada
 const agregarPlantilla = async(req, res)=>{
@@ -215,6 +220,310 @@ const leerDatosModerno3 = async(req, res)=>{
 }
 
 
+//Genera PDFS
+const imprimirBasico = async(req, res)=>{
+    const descripcionData = await DescripcionData.find({user: req.user.id}).lean()
+    const personal = await PersonalData.find({user: req.user.id}).lean() 
+    const laboralData = await LaboralData.find({user: req.user.id}).lean()
+    const user = await User.find(req.user.id).lean()
+    const userImg = await User.find(req.user.id)
+    
+
+    console.log(user)
+    //Compilacion puppeter con hbs
+    const compile = async function(templateName, data){
+        const filePath = path.join(process.cwd(), 'views', `${templateName}.hbs`)
+        const html = await fs.readFile(filePath, 'utf8')
+        return hbs.compile(html)({personal : personal, laboralData: laboralData, user: user, descripcionData: descripcionData, userImg: userImg})
+    };
+    //Puppeter
+    const puppeter = require('puppeteer');
+    (async function(){
+        try{
+            const browser = await puppeter.launch()
+            const page = await browser.newPage()
+            const content = await compile('basicoPDF', ({personal : personal, laboralData: laboralData, user: user, descripcionData: descripcionData, userImg: userImg}))
+            await page.setContent(content)
+            await page.pdf({
+            path:`./public/pdfs/${req.user.id}.pdf`,
+            format: 'A4',
+            printBackground: true,
+            })
+            res.redirect(`http://localhost:3000/pdfs/${req.user.id}.pdf`)
+        }
+        catch(error){
+            req.flash("mensajes", [{msg: "Hubo un error al crear al crear el PDF"}])
+            return res.redirect('/elegirPlantilla/soloElegirPlantilla')
+        }
+    })();
+}
+
+const imprimirCreativo1= async(req, res)=>{
+    const descripcionData = await DescripcionData.find({user: req.user.id}).lean()
+    const personal = await PersonalData.find({user: req.user.id}).lean() 
+    const laboralData = await LaboralData.find({user: req.user.id}).lean()
+    const user = await User.find(req.user.id).lean()
+    //Compilacion puppeter con hbs
+    const compile = async function(templateName, data){
+        const filePath = path.join(process.cwd(), 'views', `${templateName}.hbs`)
+        const html = await fs.readFile(filePath, 'utf8')
+        return hbs.compile(html)({personal : personal, laboralData: laboralData, user: user, descripcionData: descripcionData})
+    };
+    //Puppeter
+    const puppeter = require('puppeteer');
+    (async function(){
+        try{
+            const browser = await puppeter.launch()
+            const page = await browser.newPage()
+            const content = await compile('creativo1PDF', ({personal : personal, laboralData: laboralData, user: user, descripcionData: descripcionData}))
+            await page.setContent(content)
+            await page.pdf({
+            path:`./public/pdfs/${req.user.id}.pdf`,
+            format: 'A4',
+            printBackground: true,
+            })
+            res.redirect(`http://localhost:3000/pdfs/${req.user.id}.pdf`)
+        }
+        catch(error){
+            req.flash("mensajes", [{msg: "Hubo un error al crear al crear el PDF"}])
+            return res.redirect('/elegirPlantilla/soloElegirPlantilla')
+        }
+    })();
+}
+
+const imprimirModerno1 = async(req, res)=>{
+    const descripcionData = await DescripcionData.find({user: req.user.id}).lean()
+    const personal = await PersonalData.find({user: req.user.id}).lean() 
+    const laboralData = await LaboralData.find({user: req.user.id}).lean()
+    const user = await User.find(req.user.id).lean()
+    //Compilacion puppeter con hbs
+    const compile = async function(templateName, data){
+        const filePath = path.join(process.cwd(), 'views', `${templateName}.hbs`)
+        const html = await fs.readFile(filePath, 'utf8')
+        return hbs.compile(html)({personal : personal, laboralData: laboralData, user: user, descripcionData: descripcionData})
+    };
+    //Puppeter
+    const puppeter = require('puppeteer');
+    (async function(){
+        try{
+            const browser = await puppeter.launch()
+            const page = await browser.newPage()
+            const content = await compile('moderno1PDF', ({personal : personal, laboralData: laboralData, user: user, descripcionData: descripcionData}))
+            await page.setContent(content)
+            await page.pdf({
+            path:`./public/pdfs/${req.user.id}.pdf`,
+            format: 'A4',
+            printBackground: true,
+            })
+            res.redirect(`http://localhost:3000/pdfs/${req.user.id}.pdf`)
+        }
+        catch(error){
+            req.flash("mensajes", [{msg: "Hubo un error al crear al crear el PDF"}])
+            return res.redirect('/elegirPlantilla/soloElegirPlantilla')
+        }
+    })();
+}
+
+const imprimirCronologico = async(req, res)=>{
+    const descripcionData = await DescripcionData.find({user: req.user.id}).lean()
+    const personal = await PersonalData.find({user: req.user.id}).lean() 
+    const laboralData = await LaboralData.find({user: req.user.id}).lean()
+    const user = await User.find(req.user.id).lean()
+    //Compilacion puppeter con hbs
+    const compile = async function(templateName, data){
+        const filePath = path.join(process.cwd(), 'views', `${templateName}.hbs`)
+        const html = await fs.readFile(filePath, 'utf8')
+        return hbs.compile(html)({personal : personal, laboralData: laboralData, user: user, descripcionData: descripcionData})
+    };
+    //Puppeter
+    const puppeter = require('puppeteer');
+    (async function(){
+        try{
+            const browser = await puppeter.launch()
+            const page = await browser.newPage()
+            const content = await compile('cronologicoPDF', ({personal : personal, laboralData: laboralData, user: user, descripcionData: descripcionData}))
+            await page.setContent(content)
+            await page.pdf({
+            path:`./public/pdfs/${req.user.id}.pdf`,
+            format: 'A4',
+            printBackground: true,
+            })
+            res.redirect(`http://localhost:3000/pdfs/${req.user.id}.pdf`)
+        }
+        catch(error){
+            req.flash("mensajes", [{msg: "Hubo un error al crear al crear el PDF"}])
+            return res.redirect('/elegirPlantilla/soloElegirPlantilla')
+        }
+    })();
+}
+
+const imprimirFuncional = async(req, res)=>{
+    const descripcionData = await DescripcionData.find({user: req.user.id}).lean()
+    const personal = await PersonalData.find({user: req.user.id}).lean() 
+    const laboralData = await LaboralData.find({user: req.user.id}).lean()
+    const user = await User.find(req.user.id).lean()
+    //Compilacion puppeter con hbs
+    const compile = async function(templateName, data){
+        const filePath = path.join(process.cwd(), 'views', `${templateName}.hbs`)
+        const html = await fs.readFile(filePath, 'utf8')
+        return hbs.compile(html)({personal : personal, laboralData: laboralData, user: user, descripcionData: descripcionData})
+    };
+    //Puppeter
+    const puppeter = require('puppeteer');
+    (async function(){
+        try{
+            const browser = await puppeter.launch()
+            const page = await browser.newPage()
+            const content = await compile('funcionalPDF', ({personal : personal, laboralData: laboralData, user: user, descripcionData: descripcionData}))
+            await page.setContent(content)
+            await page.pdf({
+            path:`./public/pdfs/${req.user.id}.pdf`,
+            format: 'A4',
+            printBackground: true,
+            })
+            res.redirect(`http://localhost:3000/pdfs/${req.user.id}.pdf`)
+        }
+        catch(error){
+            req.flash("mensajes", [{msg: "Hubo un error al crear al crear el PDF"}])
+            return res.redirect('/elegirPlantilla/soloElegirPlantilla')
+        }
+    })();
+}
+
+const imprimirMixto = async(req, res)=>{
+    const descripcionData = await DescripcionData.find({user: req.user.id}).lean()
+    const personal = await PersonalData.find({user: req.user.id}).lean() 
+    const laboralData = await LaboralData.find({user: req.user.id}).lean()
+    const user = await User.find(req.user.id).lean()
+    //Compilacion puppeter con hbs
+    const compile = async function(templateName, data){
+        const filePath = path.join(process.cwd(), 'views', `${templateName}.hbs`)
+        const html = await fs.readFile(filePath, 'utf8')
+        return hbs.compile(html)({personal : personal, laboralData: laboralData, user: user, descripcionData: descripcionData})
+    };
+    //Puppeter
+    const puppeter = require('puppeteer');
+    (async function(){
+        try{
+            const browser = await puppeter.launch()
+            const page = await browser.newPage()
+            const content = await compile('mixtoPDF', ({personal : personal, laboralData: laboralData, user: user, descripcionData: descripcionData}))
+            await page.setContent(content)
+            await page.pdf({
+            path:`./public/pdfs/${req.user.id}.pdf`,
+            format: 'A4',
+            printBackground: true,
+            })
+            res.redirect(`http://localhost:3000/pdfs/${req.user.id}.pdf`)
+        }
+        catch(error){
+            req.flash("mensajes", [{msg: "Hubo un error al crear al crear el PDF"}])
+            return res.redirect('/elegirPlantilla/soloElegirPlantilla')
+        }
+    })();
+}
+
+const imprimirModerno2 = async(req, res)=>{
+    const descripcionData = await DescripcionData.find({user: req.user.id}).lean()
+    const personal = await PersonalData.find({user: req.user.id}).lean() 
+    const laboralData = await LaboralData.find({user: req.user.id}).lean()
+    const user = await User.find(req.user.id).lean()
+    //Compilacion puppeter con hbs
+    const compile = async function(templateName, data){
+        const filePath = path.join(process.cwd(), 'views', `${templateName}.hbs`)
+        const html = await fs.readFile(filePath, 'utf8')
+        return hbs.compile(html)({personal : personal, laboralData: laboralData, user: user, descripcionData: descripcionData})
+    };
+    //Puppeter
+    const puppeter = require('puppeteer');
+    (async function(){
+        try{
+            const browser = await puppeter.launch()
+            const page = await browser.newPage()
+            const content = await compile('moderno2PDF', ({personal : personal, laboralData: laboralData, user: user, descripcionData: descripcionData}))
+            await page.setContent(content)
+            await page.pdf({
+            path:`./public/pdfs/${req.user.id}.pdf`,
+            format: 'A4',
+            printBackground: true,
+            })
+            res.redirect(`http://localhost:3000/pdfs/${req.user.id}.pdf`)
+        }
+        catch(error){
+            req.flash("mensajes", [{msg: "Hubo un error al crear al crear el PDF"}])
+            return res.redirect('/elegirPlantilla/soloElegirPlantilla')
+        }
+    })();
+}
+
+const imprimirCreativo2 = async(req, res)=>{
+    const descripcionData = await DescripcionData.find({user: req.user.id}).lean()
+    const personal = await PersonalData.find({user: req.user.id}).lean() 
+    const laboralData = await LaboralData.find({user: req.user.id}).lean()
+    const user = await User.find(req.user.id).lean()
+    //Compilacion puppeter con hbs
+    const compile = async function(templateName, data){
+        const filePath = path.join(process.cwd(), 'views', `${templateName}.hbs`)
+        const html = await fs.readFile(filePath, 'utf8')
+        return hbs.compile(html)({personal : personal, laboralData: laboralData, user: user, descripcionData: descripcionData})
+    };
+    //Puppeter
+    const puppeter = require('puppeteer');
+    (async function(){
+        try{
+            const browser = await puppeter.launch()
+            const page = await browser.newPage()
+            const content = await compile('creativo2PDF', ({personal : personal, laboralData: laboralData, user: user, descripcionData: descripcionData}))
+            await page.setContent(content)
+            await page.pdf({
+            path:`./public/pdfs/${req.user.id}.pdf`,
+            format: 'A4',
+            printBackground: true,
+            })
+            res.redirect(`http://localhost:3000/pdfs/${req.user.id}.pdf`)
+        }
+        catch(error){
+            req.flash("mensajes", [{msg: "Hubo un error al crear al crear el PDF"}])
+            return res.redirect('/elegirPlantilla/soloElegirPlantilla')
+        }
+    })();
+}
+
+const imprimirModerno3= async(req, res)=>{
+    const descripcionData = await DescripcionData.find({user: req.user.id}).lean()
+    const personal = await PersonalData.find({user: req.user.id}).lean() 
+    const laboralData = await LaboralData.find({user: req.user.id}).lean()
+    const user = await User.find(req.user.id).lean()
+    //Compilacion puppeter con hbs
+    const compile = async function(templateName, data){
+        const filePath = path.join(process.cwd(), 'views', `${templateName}.hbs`)
+        const html = await fs.readFile(filePath, 'utf8')
+        return hbs.compile(html)({personal : personal, laboralData: laboralData, user: user, descripcionData: descripcionData})
+    };
+    //Puppeter
+    const puppeter = require('puppeteer');
+    (async function(){
+        try{
+            const browser = await puppeter.launch()
+            const page = await browser.newPage()
+            const content = await compile('moderno3PDF', ({personal : personal, laboralData: laboralData, user: user, descripcionData: descripcionData}))
+            await page.setContent(content)
+            await page.pdf({
+            path:`./public/pdfs/${req.user.id}.pdf`,
+            format: 'A4',
+            printBackground: true,
+            })
+            res.redirect(`http://localhost:3000/pdfs/${req.user.id}.pdf`)
+        }
+        catch(error){
+            req.flash("mensajes", [{msg: "Hubo un error al crear al crear el PDF"}])
+            return res.redirect('/elegirPlantilla/soloElegirPlantilla')
+        }
+    })();
+}
+
+
+
 module.exports = {
     agregarPlantilla,
     leerDatosBasico,
@@ -225,5 +534,14 @@ module.exports = {
     leerDatosMixto,
     leerDatosModerno2,
     leerDatosCreativo2,
-    leerDatosModerno3
+    leerDatosModerno3,
+    imprimirBasico,
+    imprimirCreativo1,
+    imprimirModerno1,
+    imprimirCronologico,
+    imprimirFuncional,
+    imprimirMixto,
+    imprimirModerno2,
+    imprimirCreativo2,
+    imprimirModerno3,
 }

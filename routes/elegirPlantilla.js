@@ -1,5 +1,18 @@
 const express = require('express')
-const { agregarPlantilla, leerDatosBasico, leerDatosCreativo1, leerDatosModerno1, leerDatosCronologico, leerDatosFuncional, leerDatosMixto, leerDatosModerno2, leerDatosCreativo2, leerDatosModerno3} = require('../controllers/elegirPlantillaController')
+const { 
+    agregarPlantilla, leerDatosBasico, leerDatosCreativo1, 
+    leerDatosModerno1, leerDatosCronologico, leerDatosFuncional, 
+    leerDatosMixto, leerDatosModerno2, leerDatosCreativo2, leerDatosModerno3, 
+    imprimirBasico,
+    imprimirCreativo1,
+    imprimirModerno1,
+    imprimirCronologico,
+    imprimirFuncional,
+    imprimirMixto,
+    imprimirModerno2,
+    imprimirCreativo2,
+    imprimirModerno3
+} = require('../controllers/elegirPlantillaController')
 const verificarUser = require('../middlewares/verificarUser')
 const { route } = require('./datosLaborales')
 
@@ -26,6 +39,16 @@ router.get('/soloElegirPlantilla', verificarUser, (req, res)=>{
 })
 
 router.post('/soloElegirPlantilla', verificarUser, agregarPlantilla)
+
+router.get('/imprimirBasico', verificarUser, imprimirBasico)
+router.get('/imprimirCreativo1', verificarUser, imprimirCreativo1)
+router.get('/imprimirModerno1', verificarUser, imprimirModerno1)
+router.get('/imprimirCronologico', verificarUser, imprimirCronologico)
+router.get('/imprimirFuncional', verificarUser, imprimirFuncional)
+router.get('/imprimirMixto', verificarUser,  imprimirMixto)
+router.get('/imprimirModerno2', verificarUser, imprimirModerno2)
+router.get('/imprimirCreativo2', verificarUser, imprimirCreativo2)
+router.get('/imprimirModerno3', verificarUser, imprimirModerno3)
 
 
 module.exports = router

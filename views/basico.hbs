@@ -2,15 +2,16 @@
 <title>Diseño Basico</title>
 <header>
     <a class="otro" href="/elegirPlantilla/soloElegirPlantilla">⤺Cambiar diseño</a>
-    <a class="otro" href="/">⭳Descargar</a>
+    <a class="otro" href="/elegirPlantilla/imprimirBasico">⭳Descargar</a>
 </header>
 <main>
     <div class="container">
         <form action="" method="get">
             <div class="bordeColorTop"></div>
-
-            <h1 class="titulo">*Nombre y Apellido*</h1>
+            {{#each personal}}
+            <h1 class="titulo">{{this.nombre}} {{this.apellido}}</h1>
             <hr>
+            {{/each}}
             <div class="izquierda">
                 {{#each user}}
                     <img src="../img/perfiles/{{this.imagen}}">
@@ -113,7 +114,7 @@
                         <tr>
                             <th><h3 class="black">{{this.carrera2}}</h3></th>
                             <th rowspan="2" class="alineacionFin">
-                                <h3>*Año egreso: {{this.finalizado2}}</h3>
+                                <h3>Año egreso: {{this.finalizado2}}</h3>
                             </th>
                         </tr>
                         <tr>
@@ -124,7 +125,7 @@
                         <tr>
                             <th><h3 class="black">{{this.carrera3}}</h3></th>
                             <th rowspan="2" class="alineacionFin">
-                                <h3>*Año egreso: {{this.finalizado3}}</h3>
+                                <h3>Año egreso: {{this.finalizado3}}</h3>
                             </th>
                         </tr>
                         <tr>
